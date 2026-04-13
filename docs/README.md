@@ -2,13 +2,16 @@
 
 Informações básicas do projeto.
 
-* **Projeto:** [NOME DO PROJETO]
-* **Repositório GitHub:** [LINK PARA O REPOSITÓRIO NO GITHUB]
+* **Projeto:** Plannit
+* **Repositório GitHub:** https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-1-ti1-0427200-plannit-1.git
 * **Membros da equipe:**
 
-  * [Fulano](https://github.com/fulano) ⚠️ EXEMPLO ⚠️
-  * [Beltrano](https://github.com/beltrano) ⚠️ EXEMPLO ⚠️
-  * [Cicrano](https://github.com/cicrano) ⚠️ EXEMPLO ⚠️
+  * [Antônio Cardoso](https://github.com/AntonioCardosoASimoes)
+  * [Gabriel Cedric]() 
+  * [Henrique Victor]()
+  * [Ian Marco]()
+  * [João Victor Martins]()
+  * [Leonardo Gonzaga]() 
 
 A documentação do projeto é estruturada da seguinte forma:
 
@@ -20,7 +23,7 @@ A documentação do projeto é estruturada da seguinte forma:
 6. Solução
 7. Referências Bibliográficas
 
-✅ [Documentação de Design Thinking (MIRO)](files/processo-dt.pdf)
+✅ [Documentação de Design Thinking (MIRO)](https://miro.com/app/board/uXjVGvR6PjQ=/?share_link_id=136910997744)
 
 # Contexto
 
@@ -28,90 +31,100 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 ## Problema
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+Estudantes do ensino médio e universitários têm dificuldade em equilibrar os estudos com a saúde mental. A grande quantidade de tarefas, provas e cobranças faz com que muitos se sintam estressados, ansiosos e sobrecarregados.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
->
-> **Orientações**:
->
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+Além disso, muitos não conseguem organizar bem o próprio tempo, o que leva à procrastinação e ao acúmulo de atividades. Apesar de existirem algumas ferramentas de organização, a maioria não leva em conta o bem-estar do estudante, focando apenas na produtividade.
 
 ## Objetivos
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+OBJETIVO GERAL: Desenvolver uma aplicação web que ajude estudantes a organizarem seus estudos e, ao mesmo tempo, cuidarem da sua saúde mental.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
->
-> **Orientações**:
->
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+OBJETIVOS ESPECÍFICOS: Ajudar na organização de tarefas e horários de estudo; Incentivar pausas e momentos de descanso; Oferecer conteúdos simples sobre bem-estar e produtividade; Facilitar o acompanhamento da rotina do estudante.
 
 ## Justificativa
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+Esse projeto foi escolhido porque muitos estudantes sofrem com estresse e ansiedade por causa dos estudos. Isso mostra que é importante ter uma ferramenta que ajude não só na organização, mas também no cuidado com a saúde mental.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
->
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Orientações**:
->
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Além disso, como os estudantes já usam bastante a internet e aplicativos, uma aplicação web pode ser uma solução prática e acessível para o dia a dia.
+
+A ideia é criar uma ferramenta que una produtividade e bem-estar, ajudando o estudante a ter uma rotina mais equilibrada.
 
 ## Público-Alvo
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+O público-alvo são estudantes do ensino médio, de cursinho e universitários, geralmente entre 15 e 25 anos.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva o mercado para o qual a solução está sendo desenvolvida, detalhando um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc. Adicione informações sobre o público-alvo por meio de uma descrição textual ou por meio do mapa de stakeholders, ou como o grupo achar mais conveniente.
->
-> **Orientações**:
->
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Eles já têm familiaridade com tecnologia, como celular, computador e aplicativos, e usam esses recursos com frequência. Porém, nem sempre conseguem utilizá-los para se organizar melhor.
+
+Esses estudantes podem ter dificuldades com organização, falta de tempo e também lidar com estresse e ansiedade por causa dos estudos.
+
+STAKEHOLDERS:
+- FUNDAMENTAIS: Estudantes ensino médio, cursinho e faculdade
+- IMPORTANTES: Terapeutas/Orientadores educacionais
+- INFLUENCIADORES: Professores, instituições de ensino e diretores
 
 # Product Discovery
 
 ## Etapa de Entendimento
 
-**✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA  ✳️✳️✳️**
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
->
-> * **Matriz CSD**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
-> * **Mapa de stakeholders**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
-> * **Entrevistas qualitativas**: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
-> * **Highlights de pesquisa**: um compilado do levantamento realizado por meio das entrevistas.
+![Matriz de Alinhamento CSD](image.png)
 
 ## Etapa de Definição
 
 ### Personas
 
-**✳️✳️✳️ APRESENTE OS DIAGRAMAS DE PERSONAS ✳️✳️✳️**
+**PERSONA 1:**
+- Nome: Marcos Pedro
+- Idade: 17 anos
+- Hobby: Videogames e esportes
+- Trabalho: Estudante
 
-![Exemplo de proposta de valor](images/exemplo-persona.png)
+- Personalidade:
+Um jovem extrovertido, gosta de sair, jogar videogame e futebol com os amigos e não gosta muito de estudar.
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Relacione as personas identificadas no seu projeto e os respectivos mapas de empatia. Lembre-se que você deve ser enumerar e descrever precisamente e de forma personalizada todos os principais envolvidos com a solução almeja.
->
-> **Orientações**:
->
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Criar personas (Hotmart)](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
+- Sonhos:
+Ser bem sucedido e dar melhores condições de vida para a família.
+
+- Objetos e lugares:
+Usa videogame em casa, telefone em todo lugar, notebook para escola.
+
+- Objetivos chave:
+O objetivo seria diminuir a pressão e o estresse e organizar bem seu tempo para conseguir se dedicar aos estudos e praticar seu lazer.
+
+**PERSONA 2:**
+- Nome: Daniel Lopes
+- Idade: 20 anos
+- Hobby: Academia, ouvir música e tocar violão
+- Trabalho: Estagiário de jornalismo
+
+- Personalidade:
+Um jovem mais introvertido, escuta música o dia todo e gosta de encontrar os amigos.
+
+- Sonhos:
+Ser um bom e reconhecido jornalista e trabalhar numa emissora grande.
+
+- Objetos e lugares:
+Usa fone quase o tempo todo que está fora de casa escutando suas músicas, usa o telefone, toca violão em casa.
+
+- Objetivos chave:
+O objetivo seria organizar melhor sua rotina para encaixar estudo, trabalho, academia e um tempo para treinar violão.
+
+**PERSONA 3:**
+- Nome: Rafaela Alves
+- Idade: 18 anos
+- Hobby: Caminhar, mexer nas redes sociais e ler
+- Trabalho: Estudante
+
+- Personalidade:
+Uma jovem extrovertida, amigável, gosta de conversar, ver curiosidades e atualizações do mundo da medicina e sair com os amigos.
+
+- Sonhos:
+Passar em medicina na federal e ser médica.
+
+- Objetos e lugares:
+Usa bastante o celular, principalmente nos momentos de lazer e enquanto está indo para a aula, lê livros também e usa óculos.
+
+- Objetivos chave:
+O objetivo seria para ajudar a aliviar a pressão da carga volumosa de estudos e provas e da pressão de passar na federal, além de conseguir organizar melhor sua rotina.
 
 # Product Design
 
@@ -121,31 +134,21 @@ Nesse momento, vamos transformar os insights e validações obtidos em soluçõe
 
 Com base na análise das personas foram identificadas as seguintes histórias de usuários:
 
-| EU COMO...`PERSONA` | QUERO/PRECISO ...`FUNCIONALIDADE`        | PARA ...`MOTIVO/VALOR`               |
-| --------------------- | ------------------------------------------ | -------------------------------------- |
-| Usuário do sistema   | Registrar minhas tarefas ⚠️ EXEMPLO ⚠️ | Não esquecer de fazê-las             |
-| Administrador         | Alterar permissões ⚠️ EXEMPLO ⚠️      | Permitir que possam administrar contas |
+| EU COMO...              | QUERO/PRECISO...                               | PARA...                                                    |
+| ----------------------- | ---------------------------------------------- | ---------------------------------------------------------- |
+| Estudante               | Um calendário/agenda                           | Organizar meus compromissos diários                        |
+| Estudante               | Ajuda psicológica ou psicopedagógica           | Aliviar a tensão e o estresse diário                       |
+| Estudante               | Uma maneira de comunicar com outros estudantes | Dar dicas de estudo e organização                          |
+| Psicólogo/Psicopedagogo | Oferecer meu serviço                           | Ajudar os estudantes                                       |
+| Estudante               | Conteúdos                                      | Me ajudar com procrastinação e ansiedade com provas        |
+| Estudante               | Uma lista de tarefas                           | Ter controle do que já fiz e o que ainda precisa ser feito |
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão das necessidades de cada persona. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
->
-> **Orientações**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
 
 ## Proposta de Valor
 
-**✳️✳️✳️ APRESENTE O DIAGRAMA DA PROPOSTA DE VALOR PARA CADA PERSONA ✳️✳️✳️**
-
-##### Proposta de valor para Persona XPTO ⚠️ EXEMPLO ⚠️
-
-![Exemplo de proposta de valor](images/exemplo-proposta-valor.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
+![Proposta de Valor da Persona 1](image-1.png)
+![Proposta de Valor da Persona 2](image-2.png)
+![Proposta de Valor da Persona 3](image-3.png)
 
 ## Requisitos
 
