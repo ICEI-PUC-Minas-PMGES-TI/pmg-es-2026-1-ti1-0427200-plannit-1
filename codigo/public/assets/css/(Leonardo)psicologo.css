@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+}
+
+.topbar {
+  background: #2F80ED;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background: white;
+  height: calc(100vh - 60px);
+  border-right: 1px solid #ddd;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sidebar li:hover {
+  background: #f0f0f0;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-aceitar {
+  background: #27AE60;
+  color: white;
+}
+
+.btn-recusar {
+  background: #EB5757;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+}
