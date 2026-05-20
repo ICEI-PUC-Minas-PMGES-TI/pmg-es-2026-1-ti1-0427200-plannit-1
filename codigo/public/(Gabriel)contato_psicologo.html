@@ -1,312 +1,588 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fale com um Psicólogo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicólogos</title>
 
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<style>
 
-        body{
-            background-color: #43c79b;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-        /* HEADER */
+body{
+    background:#45c792;
+}
 
-        header{
-            background-color: #4d87d9;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-        }
 
-        .logo{
-            color: white;
-            font-weight: bold;
-        }
 
-        .barra-pesquisa input{
-            width: 250px;
-            padding: 7px;
-            border-radius: 5px;
-            border: 1px solid #999;
-        }
+header{
+    background:#4c88df;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+}
 
-        nav ul{
-            display: flex;
-            gap: 15px;
-            list-style: none;
-        }
+.logo{
+    color:white;
+    font-weight:bold;
+}
 
-        nav a{
-            text-decoration: none;
-            color: white;
-            font-size: 13px;
-        }
+.search input{
+    width:250px;
+    padding:7px;
+    border-radius:5px;
+    border:none;
+}
 
-        /* BANNER */
+nav ul{
+    display:flex;
+    gap:15px;
+    list-style:none;
+}
 
-        .banner{
-            margin: 20px auto;
-            background-color: #5d7df0;
-            color: white;
-            width: 500px;
-            text-align: center;
-            padding: 10px;
-            font-size: 35px;
-            font-weight: bold;
-            position: relative;
-        }
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+}
 
-        .banner::before{
-            content: "";
-            position: absolute;
-            left: -30px;
-            top: 0;
-            border-top: 28px solid transparent;
-            border-bottom: 28px solid transparent;
-            border-right: 30px solid #5d7df0;
-        }
+/* BANNER */
 
-        /* CONTEÚDO */
+.banner{
+    width:500px;
+    margin:20px auto;
+    background:#5c77f0;
+    color:white;
+    text-align:center;
+    padding:12px;
+    font-size:40px;
+    font-weight:bold;
+    position:relative;
+}
 
-        .container{
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px 30px;
-        }
+.banner::before{
+    content:"";
+    position:absolute;
+    left:-30px;
+    top:0;
+    border-top:31px solid transparent;
+    border-bottom:31px solid transparent;
+    border-right:30px solid #5c77f0;
+}
 
-        /* PERFIL PRINCIPAL */
 
-        .perfil-principal{
-            width: 330px;
-            background-color: #f1f1f1;
-            border-radius: 20px;
-            padding: 20px;
-            min-height: 300px;
-        }
 
-        .foto{
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 4px solid #4d87d9;
-            margin-bottom: 15px;
-        }
+.container{
+    display:flex;
+    justify-content:space-between;
+    padding:20px;
+}
 
-        .perfil-principal p{
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
 
-        /* LADO DIREITO */
 
-        .recomendacoes{
-            width: 280px;
-        }
+.filtros{
+    width:320px;
+    background:#efefef;
+    border-radius:20px;
+    padding:20px;
+    height:fit-content;
+}
 
-        .recomendacoes h3{
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+.titulo-filtro{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:25px;
+}
 
-        .card{
-            background-color: #f5f5f5;
-            border-radius: 20px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
+.titulo-filtro h2{
+    font-size:25px;
+}
 
-        .card .foto{
-            width: 55px;
-            height: 55px;
-            margin-bottom: 10px;
-        }
+.filtro{
+    margin-bottom:20px;
+}
 
-        .card p{
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
+.filtro-header{
+    display:flex;
+    justify-content:space-between;
+    cursor:pointer;
+    font-weight:bold;
+    margin-bottom:10px;
+}
 
-        .avaliacao{
-            color: gold;
-            font-size: 18px;
-        }
+.opcoes{
+    display:none;
+    flex-direction:column;
+    gap:10px;
+    margin-left:10px;
+}
 
-        .btn{
-            margin-top: 10px;
-            background-color: #ff8b2b;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-        }
+.opcoes.active{
+    display:flex;
+}
 
-        /* FOOTER */
 
-        footer{
-            background-color: #4d87d9;
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
-        }
 
-        footer p{
-            color: black;
-        }
-    </style>
+.cards{
+    width:320px;
+}
+
+.card{
+    background:#efefef;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.top-card{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.foto{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:4px solid #4c77f0;
+}
+
+.card p{
+    margin-top:10px;
+    font-size:14px;
+}
+
+.avaliacao{
+    color:gold;
+    font-size:18px;
+}
+
+.btn{
+    width:100%;
+    margin-top:15px;
+    border:none;
+    background:#ff7f23;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+
+
+.perfil{
+    display:none;
+    width:500px;
+    background:#efefef;
+    margin:20px auto;
+    border-radius:20px;
+    padding:25px;
+}
+
+.perfil.active{
+    display:block;
+}
+
+.perfil-top{
+    display:flex;
+    justify-content:space-between;
+}
+
+.perfil-info{
+    display:flex;
+    gap:15px;
+}
+
+.status{
+    color:green;
+    font-weight:bold;
+}
+
+.perfil h4{
+    margin-top:15px;
+}
+
+.perfil p{
+    margin-top:10px;
+    line-height:1.4;
+}
+
+.botoes{
+    display:flex;
+    justify-content:space-around;
+    margin-top:30px;
+}
+
+.btn-laranja{
+    background:#ff7f23;
+    border:none;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn-azul{
+    background:#4c77f0;
+    border:none;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+
+
+footer{
+    background:#4c88df;
+    text-align:center;
+    padding:10px;
+    margin-top:20px;
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+<header>
 
-    <header>
+<div class="logo">
+Logo do site
+</div>
 
-        <div class="logo">
-            Logo do site
-        </div>
+<div class="search">
+<input type="text" placeholder="Buscar ferramentas...">
+</div>
 
-        <div class="barra-pesquisa">
-            <input type="text" placeholder="🔍 Buscar ferramentas...">
-        </div>
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Planejador</a></li>
+<li><a href="#">Bem-Estar</a></li>
+<li><a href="#">Sobre</a></li>
+<li><a href="#">Conta</a></li>
+</ul>
+</nav>
 
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Planejador</a></li>
-                <li><a href="#">Bem-Estar</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Conta</a></li>
-            </ul>
-        </nav>
+</header>
 
-    </header>
+<div class="banner">
+Fale com um Psicólogo!
+</div>
 
-    <!-- BANNER -->
 
-    <div class="banner">
-        Fale com um Psicólogo!
+
+<div class="container" id="pagina-lista">
+
+<div class="filtros">
+
+<div class="titulo-filtro">
+<h2>FILTROS</h2>
+</div>
+
+
+
+<div class="filtro">
+
+<div class="filtro-header">
+<span>Tipos de Atendimento</span>
+<span class="toggle">-</span>
+</div>
+
+<div class="opcoes active">
+
+<label>
+<input type="checkbox" class="filtro-check" value="online">
+Online
+</label>
+
+<label>
+<input type="checkbox" class="filtro-check" value="presencial">
+Presencial
+</label>
+
+<label>
+<input type="checkbox" class="filtro-check" value="ambos">
+Ambos
+</label>
+
+</div>
+
+</div>
+
+
+
+<div class="filtro">
+
+<div class="filtro-header">
+<span>Especialidade</span>
+<span class="toggle">+</span>
+</div>
+
+<div class="opcoes">
+
+<label><input type="checkbox" class="filtro-check">Ansiedade</label>
+<label><input type="checkbox" class="filtro-check">Depressão</label>
+<label><input type="checkbox" class="filtro-check">TDAH</label>
+
+</div>
+
+</div>
+
+
+
+<div class="filtro">
+
+<div class="filtro-header">
+<span>Avaliação Mínima</span>
+<span class="toggle">+</span>
+</div>
+
+<div class="opcoes">
+
+<label><input type="checkbox" class="filtro-check">4 estrelas</label>
+<label><input type="checkbox" class="filtro-check">5 estrelas</label>
+
+</div>
+
+</div>
+
+<div class="filtro">
+
+    <div class="filtro-header">
+        <span>Faixa de preço</span>
+        <span class="toggle">+</span>
     </div>
 
-    <!-- CONTEÚDO -->
+    <div class="opcoes">
 
-    <div class="container">
+        <label>
+            <input type="checkbox" class="filtro-check">
+            Até R$80
+        </label>
 
-        <!-- PERFIL PRINCIPAL -->
+        <label>
+            <input type="checkbox" class="filtro-check">
+            R$80 - R$150
+        </label>
 
-        <div class="perfil-principal">
-
-            <div class="foto"></div>
-
-            <p><strong>Nome:</strong></p>
-
-            <p><strong>Idade:</strong></p>
-
-            <p><strong>Sobre o profissional:</strong></p>
-
-            <p>
-                <strong>Tipo de atendimento:</strong><br><br>
-
-                Online
-                <input type="checkbox">
-
-                Presencial
-                <input type="checkbox">
-            </p>
-
-            <p><strong>Localidade:</strong></p>
-
-        </div>
-
-        <!-- RECOMENDAÇÕES -->
-
-        <div class="recomendacoes">
-
-            <h3>Recomendações de outros profissionais</h3>
-
-            <!-- CARD 1 -->
-
-            <div class="card">
-
-                <div class="foto"></div>
-
-                <p><strong>Nome:</strong></p>
-
-                <p><strong>Especialista:</strong></p>
-
-                <p>
-                    <strong>Avaliação</strong>
-                    <span class="avaliacao">⭐⭐⭐⭐</span>
-                </p>
-
-                <button class="btn">
-                    Agendar consulta
-                </button>
-
-            </div>
-
-            <!-- CARD 2 -->
-
-            <div class="card">
-
-                <div class="foto"></div>
-
-                <p><strong>Nome:</strong></p>
-
-                <p><strong>Especialista:</strong></p>
-
-                <p>
-                    <strong>Avaliação</strong>
-                    <span class="avaliacao">⭐⭐⭐⭐</span>
-                </p>
-
-                <button class="btn">
-                    Agendar consulta
-                </button>
-
-            </div>
-
-            <!-- CARD 3 -->
-
-            <div class="card">
-
-                <div class="foto"></div>
-
-                <p><strong>Nome:</strong></p>
-
-                <p><strong>Especialista:</strong></p>
-
-                <p>
-                    <strong>Avaliação</strong>
-                    <span class="avaliacao">⭐⭐⭐⭐</span>
-                </p>
-
-                <button class="btn">
-                    Agendar consulta
-                </button>
-
-            </div>
-
-        </div>
+        <label>
+            <input type="checkbox" class="filtro-check">
+            Acima de R$150
+        </label>
 
     </div>
 
-    <!-- FOOTER -->
+</div>
+<div class="filtro">
 
-    <footer>
-        <p>© Copyright - 2026</p>
-    </footer>
+    <div class="filtro-header">
+        <span>Disponibilidade</span>
+        <span class="toggle">+</span>
+    </div>
+
+    <div class="opcoes">
+
+        <label>
+            <input type="checkbox" class="filtro-check">
+            Hoje
+        </label>
+
+        <label>
+            <input type="checkbox" class="filtro-check">
+            Esta semana
+        </label>
+
+        <label>
+            <input type="checkbox" class="filtro-check">
+            Finais de semana
+        </label>
+
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+<div class="cards">
+
+<div class="card psicologo" data-tipo="online">
+
+<h3>Perfil de outros psicólogos</h3>
+
+<div class="top-card">
+
+<div class="foto"></div>
+
+<div>
+<p><strong>Nome:</strong></p>
+</div>
+
+</div>
+
+<p><strong>Especialista:</strong></p>
+
+<p>
+<strong>Avaliação</strong>
+<span class="avaliacao">⭐⭐⭐⭐</span>
+</p>
+
+<button class="btn visitar">
+Visitar perfil
+</button>
+
+</div>
+
+<div class="card psicologo" data-tipo="presencial">
+
+<h3>Perfil de outros psicólogos</h3>
+
+<div class="top-card">
+
+<div class="foto"></div>
+
+<div>
+<p><strong>Nome:</strong></p>
+</div>
+
+</div>
+
+<p><strong>Especialista:</strong></p>
+
+<p>
+<strong>Avaliação</strong>
+<span class="avaliacao">⭐⭐⭐⭐⭐</span>
+</p>
+
+<button class="btn visitar">
+Visitar perfil
+</button>
+
+</div>
+
+<div class="card psicologo" data-tipo="ambos">
+
+<h3>Perfil de outros psicólogos</h3>
+
+<div class="top-card">
+
+<div class="foto"></div>
+
+<div>
+<p><strong>Nome:</strong></p>
+</div>
+
+</div>
+
+<p><strong>Especialista:</strong></p>
+
+<p>
+<strong>Avaliação</strong>
+<span class="avaliacao">⭐⭐⭐⭐</span>
+</p>
+
+<button class="btn visitar">
+Visitar perfil
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PERFIL -->
+
+<div class="perfil" id="perfil-page">
+
+<div class="perfil-top">
+
+<div class="perfil-info">
+
+<div class="foto"></div>
+
+<div>
+
+<p><strong>Nome:</strong></p>
+
+<p class="status">
+🟢 Online
+</p>
+
+<p>Psicólogo Clínico</p>
+
+<p>✔ CRP Verificado</p>
+
+</div>
+
+</div>
+
+<div>
+⭐ 4.9
+</div>
+
+</div>
+
+<h4>Sobre o profissional:</h4>
+
+<p>
+Especialista em ansiedade, depressão e terapia de casal,
+com anos de experiência clínica.
+</p>
+
+<h4>Especialidade:</h4>
+
+<p>
+[Ansiedade] [Depressão] [TDAH]
+</p>
+
+<h4>Informações da Consulta:</h4>
+
+<p>
+💰 Valor: R$120 <br>
+⏱ Sessão: 50 minutos <br>
+📅 Hoje às 19h <br>
+💻 Atendimento Online <br>
+📍 Belo Horizonte - MG
+</p>
+
+<div class="botoes">
+
+<button class="btn-laranja">
+Agendar consulta
+</button>
+
+<button class="btn-azul">
+Entrar em contato
+</button>
+
+</div>
+
+</div>
+
+<footer>
+© Copyright - 2026
+</footer>
+
+<script src="assets/js/Gabriel(contato_psicologo).js"></script>
 
 </body>
 </html>
+
