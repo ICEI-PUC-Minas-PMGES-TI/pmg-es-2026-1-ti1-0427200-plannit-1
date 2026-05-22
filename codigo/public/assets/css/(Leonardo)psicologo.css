@@ -140,3 +140,173 @@ body {
     flex-direction: column;
   }
 }
+
+.topo-solicitacoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#abrirModal {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background: rgba(0,0,0,0.5);
+
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 10px;
+
+  width: 350px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.modal-content input {
+  padding: 10px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+}
+
+.modal-content button {
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.btn-finalizado {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+.topo-solicitacoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#abrirModal {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  background: rgba(0,0,0,0.5);
+
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 10px;
+
+  width: 350px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.modal-content input {
+  padding: 10px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+}
+
+.modal-content button {
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-aceitar {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-recusar {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
