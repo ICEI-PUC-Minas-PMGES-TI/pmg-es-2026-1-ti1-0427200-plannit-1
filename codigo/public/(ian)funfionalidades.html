@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>App Compacto</title>
+    <style>
+        body { font-family: sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; padding: 20px; }
+        .app { width: 320px; background: #1a365d; border-radius: 20px; padding: 15px; position: relative; }
+        .row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .btn { background: #2a4365; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        .dia { background: #2a4365; padding: 5px; border-radius: 5px; width: 40px; text-align: center; cursor: pointer; }
+        .dia.active { background: #ed8936; }
+        .card { background: white; color: #1e293b; padding: 10px; border-radius: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; cursor: pointer; }
+        .done { text-decoration: line-through; color: gray; }
+        .barra-bg { background: #475569; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .barra-fill { background: #ed8936; height: 100%; width: 50%; transition: width 0.2s; }
+        .fab { position: absolute; bottom: 50px; right: 20px; background: #ed8936; border-radius: 50%; width: 40px; height: 40px; border: none; color: white; font-size: 20px; cursor: pointer; }
+        .modal { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 10; }
+        .modal-in { background: white; color: black; padding: 15px; border-radius: 10px; width: 80%; }
+    </style>
+</head>
+<body>
+
+    <div class="app">
+        <div class="row">
+            <button class="btn" onclick="openM('m1')">☰</button>
+            <span style="font-size:11px;">MINHA ROTINA 2026</span>
+            <button class="btn" onclick="openM('m7')">⚙️</button>
+        </div>
+
+        <div class="btn" style="display:block; text-align:center; margin-bottom:15px;" onclick="openM('m2')">
+            <h4 id="t" style="margin:0;">📚 Planejador de Estudos</h4>
+        </div>
+
+        <div class="row">
+            <div class="dia active" onclick="selDia(this)">M<br>19</div>
+            <div class="dia" onclick="selDia(this)">T<br>20</div>
+            <div class="dia" onclick="selDia(this)">W<br>21</div>
+            <div class="dia" onclick="selDia(this)">T<br>22</div>
+            <div class="dia" onclick="selDia(this)">F<br>23</div>
+        </div>
+
+        <div id="lista">
+            <div class="card" onclick="tog(this)"><span>📖 Reading</span><input type="checkbox" checked></div>
+            <div class="card" onclick="tog(this)"><span>🏃‍♂️ Running</span><input type="checkbox"></div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.1); padding:8px; border-radius:8px; margin-top:15px;" onclick="openM('m5')">
+            <span id="p-txt" style="font-size:11px;">50%</span>
+            <div class="barra-bg"><div class="barra-fill" id="b"></div></div>
+        </div>
+
+        <button class="fab" onclick="openM('m6')">+</button>
+
+        <div id="m1" class="modal" onclick="closeM()"><div class="modal-in"><h3>Menu</h3><p>👤 Perfil</p><p>📊 Relatórios</p></div></div>
+        <div id="m2" class="modal" onclick="closeM()"><div class="modal-in" onclick="event.stopPropagation()"><h3>Editar Título</h3><input id="i-t" value="Planejador de Estudos"><button onclick="savT()">Salvar</button></div></div>
+        <div id="m5" class="modal" onclick="closeM()"><div class="modal-in"><h3>Gráfico Histórico</h3><div style="display:flex; gap:10px; align-items:flex-end; height:60px; background:#eee; padding:5px;"><div style="background:#ed8936; width:20px; height:80%;"></div><div style="background:#ed8936; width:20px; height:40%;"></div></div></div></div>
+        <div id="m6" class="modal" onclick="closeM()"><div class="modal-in" onclick="event.stopPropagation()"><h3>Nova Tarefa</h3><input id="i-n" placeholder="Nome"><button onclick="addT()">Criar</button></div></div>
+        <div id="m7" class="modal" onclick="closeM()"><div class="modal-in"><h3>Configurações</h3><label><input type="checkbox" checked> Notificações</label></div></div>
+    </div>
+
+    <script>
+        const openM = id => document.getElementById(id).style.display = 'flex';
+        const closeM = () => document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        const selDia = d => { document.querySelectorAll('.dia').forEach(x => x.classList.remove('active')); d.classList.add('active'); };
+        
+        function tog(c) {
+            let i = c.querySelector('input'); i.checked = !i.checked;
+            c.querySelector('span').classList.toggle('done', i.checked);
+            up();
+        }
+        
+        function up() {
+            let t = document.querySelectorAll('.card input').length;
+            let ok = document.querySelectorAll('.card input:checked').length;
+            let p = t ? Math.round((ok/t)*100) : 0;
+            document.getElementById('b').style.width = p + '%';
+            document.getElementById('p-txt').innerText = `${p}% (${ok} de ${t})`;
+        }
+
+        function savT() { document.getElementById('t').innerText = "📚 " + document.getElementById('i-t').value; closeM(); }
+        
+        function addT() {
+            let n = document.getElementById('i-n').value; if(!n) return;
+            document.getElementById('lista').insertAdjacentHTML('beforeend', `<div class="card" onclick="tog(this)"><span>📝 ${n}</span><input type="checkbox"></div>`);
+            document.getElementById('i-n').value = ''; closeM(); up();
+        }
+        up();
+    </script>
+</body>
+</html>
