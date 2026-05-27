@@ -124,3 +124,84 @@ campoPesquisa.addEventListener('keyup', () => {
     });
 
 });
+
+/* ABRIR AGENDAMENTO */
+
+const btnAgendar = document.querySelector('.btn-laranja');
+
+const agendamentoPage = document.getElementById('agendamento-page');
+
+btnAgendar.addEventListener('click', () => {
+
+    perfilPage.style.display = 'none';
+
+    agendamentoPage.classList.add('active');
+
+});
+
+/* BOTÃO VOLTAR */
+
+function voltarPagina(){
+
+    if(agendamentoPage.classList.contains('active')){
+
+        agendamentoPage.classList.remove('active');
+
+        perfilPage.style.display = 'block';
+
+    }else if(perfilPage.classList.contains('active')){
+
+        perfilPage.classList.remove('active');
+
+        paginaLista.style.display = 'flex';
+
+    }
+
+}
+
+/* TROCAR MESES */
+
+const meses = [
+    "Janeiro 2026",
+    "Fevereiro 2026",
+    "Março 2026",
+    "Abril 2026",
+    "Maio 2026",
+    "Junho 2026",
+    "Julho 2026",
+    "Agosto 2026",
+    "Setembro 2026",
+    "Outubro 2026",
+    "Novembro 2026",
+    "Dezembro 2026"
+];
+
+let mesAtual = 5;
+
+const mesTexto = document.getElementById('mes-texto');
+
+document.getElementById('proximo-mes')
+.addEventListener('click', () => {
+
+    mesAtual++;
+
+    if(mesAtual > 11){
+        mesAtual = 0;
+    }
+
+    mesTexto.textContent = meses[mesAtual];
+
+});
+
+document.getElementById('mes-anterior')
+.addEventListener('click', () => {
+
+    mesAtual--;
+
+    if(mesAtual < 0){
+        mesAtual = 11;
+    }
+
+    mesTexto.textContent = meses[mesAtual];
+
+});

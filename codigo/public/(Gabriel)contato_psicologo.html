@@ -253,6 +253,155 @@ footer{
     margin-top:20px;
 }
 
+.dia-box{
+    border:2px solid #00b26f;
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+    width:80px;
+    color:#00b26f;
+}
+
+.horarios{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.hora{
+    padding:10px;
+    border-radius:20px;
+    border:1px solid #ccc;
+    background:white;
+    cursor:pointer;
+    font-weight:bold;
+    color:#00a86b;
+}
+
+/* AGENDAMENTO */
+
+.agendamento-container{
+    display:none;
+    justify-content:center;
+    align-items:center;
+    min-height:80vh;
+    padding:30px;
+}
+
+.agendamento-container.active{
+    display:flex;
+}
+
+.agendamento-card{
+    background:#efefef;
+    width:500px;
+    border-radius:25px;
+    padding:30px;
+}
+
+.agendamento-titulo{
+    background:#5c77f0;
+    color:white;
+    font-size:45px;
+    font-weight:bold;
+    text-align:center;
+    padding:15px;
+    margin-bottom:40px;
+    position:relative;
+}
+
+.agendamento-titulo::before{
+    content:"";
+    position:absolute;
+    left:-30px;
+    top:0;
+    border-top:37px solid transparent;
+    border-bottom:37px solid transparent;
+    border-right:30px solid #5c77f0;
+}
+
+.mes-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.seta{
+    background:#5c77f0;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.dias{
+    display:flex;
+    justify-content:space-around;
+    margin-bottom:40px;
+}
+
+.dia-box{
+    border:2px solid #00b26f;
+    border-radius:15px;
+    width:80px;
+    height:80px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:#00a86b;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.dia-box:hover{
+    background:rgba(0, 168, 107, 0.15);
+}
+
+.titulo-horarios{
+    margin-bottom:20px;
+}
+
+.horarios{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.hora{
+    padding:12px;
+    border-radius:20px;
+    border:1px solid #ccc;
+    background:white;
+    color:#00a86b;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hora:hover{
+    background:rgba(0, 168, 107, 0.15);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:600px){
+
+    .agendamento-card{
+        width:100%;
+    }
+
+    .agendamento-titulo{
+        font-size:30px;
+    }
+
+    .horarios{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
 </style>
 </head>
 
@@ -590,6 +739,84 @@ Entrar em contato
 </button>
 
 </div>
+
+</div>
+
+<!-- PÁGINA AGENDAMENTO -->
+
+<div class="agendamento-container" id="agendamento-page">
+
+    <div class="agendamento-card">
+
+        <div class="agendamento-titulo">
+            Agendar Consulta
+        </div>
+
+        <!-- MÊS -->
+
+        <div class="mes-header">
+
+            <button class="seta" id="mes-anterior">
+                ◀
+            </button>
+
+            <h2 id="mes-texto">
+                Junho 2026
+            </h2>
+
+            <button class="seta" id="proximo-mes">
+                ▶
+            </button>
+
+        </div>
+
+        <!-- DIAS -->
+
+        <div class="dias">
+
+            <div class="dia-box">
+                <p>Qui</p>
+                <h3>11</h3>
+            </div>
+
+            <div class="dia-box">
+                <p>Qui</p>
+                <h3>18</h3>
+            </div>
+
+            <div class="dia-box">
+                <p>Qui</p>
+                <h3>25</h3>
+            </div>
+
+        </div>
+
+        <!-- HORÁRIOS -->
+
+        <h3 class="titulo-horarios">
+            Horários disponíveis:
+        </h3>
+
+        <div class="horarios">
+
+            <button class="hora">08:00</button>
+            <button class="hora">08:10</button>
+            <button class="hora">08:20</button>
+            <button class="hora">08:30</button>
+
+            <button class="hora">08:40</button>
+            <button class="hora">08:50</button>
+            <button class="hora">09:00</button>
+            <button class="hora">09:10</button>
+
+            <button class="hora">09:20</button>
+            <button class="hora">09:40</button>
+            <button class="hora">09:50</button>
+            <button class="hora">10:00</button>
+
+        </div>
+
+    </div>
 
 </div>
 
