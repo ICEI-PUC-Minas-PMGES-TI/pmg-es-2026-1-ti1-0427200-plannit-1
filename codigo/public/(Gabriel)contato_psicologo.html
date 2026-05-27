@@ -265,7 +265,7 @@ Logo do site
 </div>
 
 <div class="search">
-<input type="text" placeholder="Buscar ferramentas...">
+<input type="text" id="pesquisa" placeholder="Buscar psicólogo...">
 </div>
 
 <nav>
@@ -335,9 +335,10 @@ Ambos
 
 <div class="opcoes">
 
-<label><input type="checkbox" class="filtro-check">Ansiedade</label>
-<label><input type="checkbox" class="filtro-check">Depressão</label>
-<label><input type="checkbox" class="filtro-check">TDAH</label>
+<label><input type="checkbox" class="filtro-check" name="especialidade" value="ansiedade">
+Ansiedade</label>
+<label><input type="checkbox" class="filtro-check" name="especialidade" value="depressao">Depressão</label>
+<label><input type="checkbox" class="filtro-check" name="especialidade" value="tdah">TDAH</label>
 
 </div>
 
@@ -354,8 +355,8 @@ Ambos
 
 <div class="opcoes">
 
-<label><input type="checkbox" class="filtro-check">4 estrelas</label>
-<label><input type="checkbox" class="filtro-check">5 estrelas</label>
+<label><input type="checkbox" class="filtro-check" name="avaliacao" value="4">4 estrelas</label>
+<label><input type="checkbox" class="filtro-check" name="avaliacao" value="5">5 estrelas</label>
 
 </div>
 
@@ -371,17 +372,17 @@ Ambos
     <div class="opcoes">
 
         <label>
-            <input type="checkbox" class="filtro-check">
+            <input type="checkbox" class="filtro-check" name="preco" value="baixo">
             Até R$80
         </label>
 
         <label>
-            <input type="checkbox" class="filtro-check">
+            <input type="checkbox" class="filtro-check" name="preco" value="medio">
             R$80 - R$150
         </label>
 
         <label>
-            <input type="checkbox" class="filtro-check">
+            <input type="checkbox" class="filtro-check" name="preco" value="alto">
             Acima de R$150
         </label>
 
@@ -398,17 +399,18 @@ Ambos
     <div class="opcoes">
 
         <label>
-            <input type="checkbox" class="filtro-check">
+            <input type="checkbox" class="filtro-check" name="disponibilidade" value="hoje">
             Hoje
         </label>
 
         <label>
-            <input type="checkbox" class="filtro-check">
+            <input type="checkbox" class="filtro-check" name="disponibilidade" value="semana">
             Esta semana
         </label>
 
         <label>
-            <input type="checkbox" class="filtro-check">
+            
+<input type="checkbox" class="filtro-check" name="disponibilidade" value="fimsemana">
             Finais de semana
         </label>
 
@@ -423,7 +425,12 @@ Ambos
 
 <div class="cards">
 
-<div class="card psicologo" data-tipo="online">
+<div class="card psicologo"
+data-tipo="online"
+data-especialidade="ansiedade"
+data-avaliacao="5"
+data-preco="medio"
+data-disponibilidade="hoje">
 
 <h3>Perfil de outros psicólogos</h3>
 
@@ -432,7 +439,7 @@ Ambos
 <div class="foto"></div>
 
 <div>
-<p><strong>Nome:</strong></p>
+<p><strong>Nome: Thiago Costa</strong></p>
 </div>
 
 </div>
@@ -450,8 +457,12 @@ Visitar perfil
 
 </div>
 
-<div class="card psicologo" data-tipo="presencial">
-
+<div class="card psicologo"
+data-tipo="presencial"
+data-especialidade="depressao"
+data-avaliacao="5"
+data-preco="baixo"
+data-disponibilidade="semana">
 <h3>Perfil de outros psicólogos</h3>
 
 <div class="top-card">
@@ -459,7 +470,7 @@ Visitar perfil
 <div class="foto"></div>
 
 <div>
-<p><strong>Nome:</strong></p>
+<p><strong>Nome: Bruno Almeida</strong></p>
 </div>
 
 </div>
@@ -477,7 +488,12 @@ Visitar perfil
 
 </div>
 
-<div class="card psicologo" data-tipo="ambos">
+<div class="card psicologo"
+data-tipo="ambos"
+data-especialidade="tdah"
+data-avaliacao="4"
+data-preco="alto"
+data-disponibilidade="fimsemana">
 
 <h3>Perfil de outros psicólogos</h3>
 
@@ -486,7 +502,7 @@ Visitar perfil
 <div class="foto"></div>
 
 <div>
-<p><strong>Nome:</strong></p>
+<p><strong>Nome: Rafael Rocha</strong></p>
 </div>
 
 </div>

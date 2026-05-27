@@ -45,7 +45,9 @@ checks.forEach(check => {
         if(selecionados.length === 0){
 
             psicologos.forEach(card => {
+
                 card.style.display = 'block';
+
             });
 
         }else{
@@ -53,9 +55,21 @@ checks.forEach(check => {
             psicologos.forEach(card => {
 
                 const tipo = card.getAttribute('data-tipo');
+                const especialidade = card.getAttribute('data-especialidade');
+                const avaliacao = card.getAttribute('data-avaliacao');
+                const preco = card.getAttribute('data-preco');
+                const disponibilidade = card.getAttribute('data-disponibilidade');
 
-                if(selecionados.includes(tipo)){
+                if(
+                    selecionados.includes(tipo) ||
+                    selecionados.includes(especialidade) ||
+                    selecionados.includes(avaliacao) ||
+                    selecionados.includes(preco) ||
+                    selecionados.includes(disponibilidade)
+                ){
+
                     card.style.display = 'block';
+
                 }
 
             });
@@ -80,6 +94,32 @@ visitarBtns.forEach(btn => {
         paginaLista.style.display = 'none';
 
         perfilPage.classList.add('active');
+
+    });
+
+});
+
+/* PESQUISA POR NOME */
+
+const campoPesquisa = document.getElementById('pesquisa');
+
+campoPesquisa.addEventListener('keyup', () => {
+
+    const texto = campoPesquisa.value.toLowerCase();
+
+    psicologos.forEach(card => {
+
+        const nome = card.textContent.toLowerCase();
+
+        if(nome.includes(texto)){
+
+            card.style.display = 'block';
+
+        }else{
+
+            card.style.display = 'none';
+
+        }
 
     });
 
