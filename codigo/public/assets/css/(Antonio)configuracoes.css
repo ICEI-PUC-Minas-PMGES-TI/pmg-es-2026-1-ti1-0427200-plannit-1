@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f3f3f3;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(90deg, #3b82f6, #34d399);
+    padding: 15px 40px;
+}
+
+.barra-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 75px;
+}
+
+/* BUSCA */
+
+.busca {
+    position: relative;
+}
+
+.busca input {
+    width: 420px;
+    padding: 14px 45px;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.icone-busca {
+    position: absolute;
+    left: 15px;
+    top: 11px;
+    font-size: 22px;
+}
+
+/* MENU */
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    opacity: 0.8;
+}
+
+/* TOPO */
+
+.topo-config {
+    background: linear-gradient(90deg, #34d399, #3b82f6);
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.topo-config h1 {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.topo-config p {
+    font-size: 20px;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 80%;
+    margin: 40px auto;
+}
+
+/* CARDS */
+
+.card-config {
+    background-color: white;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 35px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.titulo-card {
+    margin-bottom: 25px;
+}
+
+.titulo-card h2 {
+    font-size: 34px;
+    margin-bottom: 5px;
+}
+
+.titulo-card p {
+    color: #666;
+    font-size: 16px;
+}
+
+.azul h2 {
+    color: #2563eb;
+}
+
+.verde h2 {
+    color: #10b981;
+}
+
+/* ITENS */
+
+.item-config {
+    border: 1px solid #ddd;
+    border-radius: 14px;
+
+    padding: 22px;
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-config h3 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.item-config p {
+    color: #666;
+}
+
+.item-config button {
+    background-color: #3b82f6;
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 22px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.item-config button:hover {
+    background-color: #2563eb;
+}
+
+/* AÇÕES */
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    margin-top: 40px;
+}
+
+.acoes button {
+    border: none;
+    border-radius: 12px;
+
+    padding: 18px 28px;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.acoes button:hover {
+    transform: scale(1.04);
+}
+
+.btn-salvar {
+    background-color: #10b981;
+}
+
+.btn-excluir {
+    background-color: #ef4444;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #3b82f6;
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 40px;
+}
