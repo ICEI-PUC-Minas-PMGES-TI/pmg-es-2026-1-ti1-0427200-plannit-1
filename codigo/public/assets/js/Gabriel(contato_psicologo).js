@@ -1,3 +1,4 @@
+
 const headers = document.querySelectorAll('.filtro-header');
 
 headers.forEach(header => {
@@ -205,3 +206,32 @@ document.getElementById('mes-anterior')
     mesTexto.textContent = meses[mesAtual];
 
 });
+
+const horarios = document.querySelectorAll(".hora");
+
+horarios.forEach(horario => {
+
+    horario.addEventListener("click", () => {
+
+        const agendamento = {
+            paciente: "Gabriel Damazio",
+            psicologo: "Dr. João Silva",
+            data: "15/06/2026",
+            horario: horario.textContent,
+            telefone1: "(31) 3287-9144",
+            telefone2: "(31) 98818-7301"
+        };
+
+        localStorage.setItem(
+            "agendamento",
+            JSON.stringify(agendamento)
+        );
+
+        window.location.href = "(Gabriel)confirmacao.html";
+
+    });
+
+}); 
+
+
+
