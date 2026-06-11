@@ -107,6 +107,16 @@
       "telefoneContato": "(31) 99999-9999",
       "status": "Pendente",
       "id": "tlXf-njePCs"
+    },
+    {
+      "usuarioId": 1,
+      "psicologoId": "1",
+      "psicologoNome": "Thiago Costa",
+      "data": "2026-06-25",
+      "horario": "09:00",
+      "telefoneContato": "(31) 99999-9999",
+      "status": "Pendente",
+      "id": "lqSd9qghWwU"
     }
   ],
   "favoritos": [
