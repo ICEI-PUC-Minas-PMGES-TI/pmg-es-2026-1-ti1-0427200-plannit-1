@@ -1,29 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const agendamento =
-        JSON.parse(localStorage.getItem("agendamento"));
+    fetch("http://localhost:3000/agendamentos")
+    .then(resposta => resposta.json())
+    .then(agendamentos => {
 
-    if (agendamento) {
+        const ultimoAgendamento =
+            agendamentos[agendamentos.length - 1];
 
         document.getElementById("nomePaciente").textContent =
-            agendamento.paciente;
+            "Gabriel Damazio";
 
         document.getElementById("nomePsicologo").textContent =
-            agendamento.psicologo;
+            ultimoAgendamento.psicologoNome;
 
         document.getElementById("dataConsulta").textContent =
-            agendamento.data;
+            ultimoAgendamento.data;
 
         document.getElementById("horarioConsulta").textContent =
-            agendamento.horario;
+            ultimoAgendamento.horario;
 
         document.getElementById("telefone1").textContent =
-            agendamento.telefone1;
+            ultimoAgendamento.telefoneContato;
 
         document.getElementById("telefone2").textContent =
-            agendamento.telefone2;
-    }
-
+            ultimoAgendamento.telefoneContato;
+    });
     document
         .getElementById("btnAgendar")
         .addEventListener("click", () => {

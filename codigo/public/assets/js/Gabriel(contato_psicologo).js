@@ -1,3 +1,5 @@
+let psicologoIdSelecionado = null;
+let psicologoSelecionado = "";
 
 const headers = document.querySelectorAll('.filtro-header');
 
@@ -84,6 +86,7 @@ checks.forEach(check => {
 
 
 const visitarBtns = document.querySelectorAll('.visitar');
+console.log("Botões encontrados:", visitarBtns.length);
 
 const paginaLista = document.getElementById('pagina-lista');
 const perfilPage = document.getElementById('perfil-page');
@@ -92,9 +95,22 @@ visitarBtns.forEach(btn => {
 
     btn.addEventListener('click', () => {
 
-        paginaLista.style.display = 'none';
+        const card = btn.closest('.card');
 
-        perfilPage.classList.add('active');
+        psicologoIdSelecionado =
+            card.getAttribute("data-id");
+
+        psicologoSelecionado =
+            card.querySelector(".top-card strong")
+                .textContent
+                .replace("Nome: ", "");
+
+        console.log("ID selecionado:", psicologoIdSelecionado);
+        console.log("Nome selecionado:", psicologoSelecionado);
+
+        paginaLista.style.display = "none";
+
+        perfilPage.classList.add("active");
 
     });
 
@@ -213,25 +229,43 @@ horarios.forEach(horario => {
 
     horario.addEventListener("click", () => {
 
-        const agendamento = {
-            paciente: "Gabriel Damazio",
-            psicologo: "Dr. João Silva",
-            data: "15/06/2026",
-            horario: horario.textContent,
-            telefone1: "(31) 3287-9144",
-            telefone2: "(31) 98818-7301"
-        };
+        console.log("Clique no horário:", horario.textContent);
 
-        localStorage.setItem(
-            "agendamento",
-            JSON.stringify(agendamento)
-        );
+const agendamento = {
+    usuarioId: 1,
+    psicologoId: psicologoIdSelecionado,
+    psicologoNome: psicologoSelecionado,
+    data: "2026-06-25",
+    horario: horario.textContent,
+    telefoneContato: "(31) 99999-9999",
+    status: "Pendente"
+};
 
-        window.location.href = "(Gabriel)confirmacao.html";
+console.log("Objeto criado:", agendamento);
+
+        fetch("http://localhost:3000/agendamentos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(agendamento)
+        })
+        .then(dados => {
+
+    console.log("Agendamento salvo:", dados);
+
+    window.location.href = "(Gabriel)confirmacao.html";
+
+})
+        .catch(erro => {
+
+    console.error("ERRO NO FETCH:", erro);
+
+});
 
     });
 
-}); 
+});
 
 
 

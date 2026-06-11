@@ -1,0 +1,125 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Gabriel Damazio",
+      "email": "gabriel@email.com",
+      "telefone": "(31) 99999-9999"
+    },
+    {
+      "id": "2",
+      "nome": "Maria Silva",
+      "email": "maria@email.com",
+      "telefone": "(31) 98888-8888"
+    }
+  ],
+  "psicologos": [
+    {
+      "id": "1",
+      "nome": "Thiago Costa",
+      "crp": "04/12345",
+      "especialidade": "Ansiedade",
+      "avaliacao": 4.8,
+      "tipoAtendimento": "Online",
+      "valorConsulta": 120,
+      "duracaoSessao": 50,
+      "cidade": "Belo Horizonte",
+      "status": "Online",
+      "telefone": "(31) 99999-1111",
+      "sobre": "Especialista em ansiedade e desenvolvimento pessoal."
+    },
+    {
+      "id": "2",
+      "nome": "Bruno Almeida",
+      "crp": "04/54321",
+      "especialidade": "Depressão",
+      "avaliacao": 5,
+      "tipoAtendimento": "Presencial",
+      "valorConsulta": 150,
+      "duracaoSessao": 50,
+      "cidade": "Belo Horizonte",
+      "status": "Online",
+      "telefone": "(31) 99999-2222",
+      "sobre": "Atendimento focado em depressão e autoestima."
+    },
+    {
+      "id": "3",
+      "nome": "Rafael Rocha",
+      "crp": "04/98765",
+      "especialidade": "TDAH",
+      "avaliacao": 4.5,
+      "tipoAtendimento": "Online e Presencial",
+      "valorConsulta": 180,
+      "duracaoSessao": 60,
+      "cidade": "Belo Horizonte",
+      "status": "Offline",
+      "telefone": "(31) 99999-3333",
+      "sobre": "Especialista em TDAH e transtornos de aprendizagem."
+    }
+  ],
+  "agendamentos": [
+    {
+      "id": "1",
+      "usuarioId": 1,
+      "psicologoId": "1",
+      "psicologoNome": "Thiago Costa",
+      "data": "2026-06-25",
+      "horario": "08:10",
+      "telefoneContato": "(31) 99999-9999",
+      "status": "Pendente"
+    },
+    {
+      "id": "2",
+      "usuarioId": 1,
+      "psicologoId": "2",
+      "psicologoNome": "Bruno Almeida",
+      "data": "2026-06-25",
+      "horario": "09:20",
+      "telefoneContato": "(31) 99999-9999",
+      "status": "Pendente"
+    },
+    {
+      "id": "3",
+      "usuarioId": 1,
+      "psicologoId": "3",
+      "psicologoNome": "Rafael Rocha",
+      "data": "2026-06-25",
+      "horario": "09:50",
+      "telefoneContato": "(31) 99999-9999",
+      "status": "Pendente"
+    },
+    {
+      "usuarioId": 1,
+      "psicologoId": "1",
+      "psicologoNome": "Thiago Costa",
+      "data": "2026-06-25",
+      "horario": "08:10",
+      "telefoneContato": "(31) 99999-9999",
+      "status": "Pendente",
+      "id": "6l4DRBYAlAQ"
+    },
+    {
+      "usuarioId": 1,
+      "psicologoId": "1",
+      "psicologoNome": "Thiago Costa",
+      "data": "2026-06-25",
+      "horario": "08:50",
+      "telefoneContato": "(31) 99999-9999",
+      "status": "Pendente",
+      "id": "tlXf-njePCs"
+    }
+  ],
+  "favoritos": [
+    {
+      "id": "1",
+      "usuarioId": 1,
+      "psicologoId": 1
+    },
+    {
+      "id": "2",
+      "usuarioId": 1,
+      "psicologoId": 3
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
