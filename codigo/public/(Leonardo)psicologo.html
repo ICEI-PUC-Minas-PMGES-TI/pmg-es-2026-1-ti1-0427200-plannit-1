@@ -2,157 +2,136 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Área do Psicólogo - Plannit</title>
-
-  <link rel="stylesheet" href="assets/css/(Leonardo)psicologo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Psicólogo - Plannit</title>
+    <link rel="stylesheet" href="assets/css/(Leonardo)psicologo.css">
 </head>
 
 <body>
 
-  <header class="topbar">
+    <header class="topbar">
+        <h2>Plannit - Psicólogo</h2>
+        <button class="logout-btn">Sair</button>
+    </header>
 
-    <h2>Plannit - Psicólogo</h2>
+    <div class="container">
 
-    <button class="logout-btn">
-      Sair
-    </button>
+        <aside class="sidebar">
+            <ul>
+                <li class="menu-item active" data-page="dashboard">Dashboard</li>
+                <li class="menu-item" data-page="agenda">Agenda</li>
+                <li class="menu-item" data-page="solicitacoes">Solicitações</li>
+                <li class="menu-item" data-page="perfil">Perfil</li>
+            </ul>
+        </aside>
 
-  </header>
+        <main class="content">
 
-  <div class="container">
+            <section id="dashboard" class="page active-page">
 
-    <aside class="sidebar">
+                <h2>Dashboard</h2>
 
-      <ul>
+                <div class="cards">
 
-        <li class="menu-item active" data-page="dashboard">
-          Dashboard
-        </li>
+                    <div class="card">
+                        <h3 id="contadorAgenda">0</h3>
+                        <p>Atendimentos</p>
+                    </div>
 
-        <li class="menu-item" data-page="agenda">
-          Agenda
-        </li>
+                    <div class="card">
+                        <h3 id="contadorSolicitacoes">0</h3>
+                        <p>Solicitações Pendentes</p>
+                    </div>
 
-        <li class="menu-item" data-page="solicitacoes">
-          Solicitações
-        </li>
+                    <div class="card">
+                        <h3>5</h3>
+                        <p>Horários Disponíveis</p>
+                    </div>
 
-        <li class="menu-item" data-page="perfil">
-          Perfil
-        </li>
+                </div>
 
-      </ul>
+            </section>
 
-    </aside>
+            <section id="agenda" class="page">
 
-    <main class="content">
+                <h2>Agenda</h2>
 
-      <section id="dashboard" class="page active-page">
+                <input
+                    type="text"
+                    id="pesquisaAgenda"
+                    placeholder="Pesquisar estudante..."
+                >
 
-        <h2>Dashboard</h2>
+                <div id="listaAgenda"></div>
 
-        <div class="cards">
+            </section>
 
-          <div class="card">
-            <h3 id="contadorAgenda">0</h3>
-            <p>Atendimentos</p>
-          </div>
+            <section id="solicitacoes" class="page">
 
-          <div class="card">
-            <h3 id="contadorSolicitacoes">0</h3>
-            <p>Solicitações Pendentes</p>
-          </div>
+                <div class="topo-solicitacoes">
 
-          <div class="card">
-            <h3>5</h3>
-            <p>Horários disponíveis</p>
-          </div>
+                    <h2>Solicitações</h2>
 
-        </div>
+                    <button id="abrirModal">
+                        Nova Solicitação
+                    </button>
 
-      </section>
+                </div>
 
-      <section id="agenda" class="page">
+                <div id="listaSolicitacoes"></div>
 
-        <h2>Agenda</h2>
+            </section>
 
-        <div id="listaAgenda"></div>
+            <section id="perfil" class="page">
 
-      </section>
+                <h2>Perfil</h2>
 
-      <section id="solicitacoes" class="page">
+                <div class="card">
 
-        <div class="topo-solicitacoes">
+                    <p><strong>Nome:</strong> Dr. João Silva</p>
 
-          <h2>Solicitações</h2>
+                    <p><strong>Especialidade:</strong> Ansiedade</p>
 
-          <button id="abrirModal">
-            Nova Solicitação
-          </button>
+                    <p><strong>Tipo:</strong> Online / Presencial</p>
 
-        </div>
+                    <p><strong>Localização:</strong> Belo Horizonte</p>
 
-        <div id="listaSolicitacoes"></div>
+                </div>
 
-      </section>
+            </section>
 
-      <section id="perfil" class="page">
-
-        <h2>Perfil</h2>
-
-        <div class="card">
-
-          <p>
-            <strong>Nome:</strong>
-            Dr. João Silva
-          </p>
-
-          <p>
-            <strong>Especialidade:</strong>
-            Ansiedade
-          </p>
-
-          <p>
-            <strong>Tipo:</strong>
-            Online / Presencial
-          </p>
-
-          <p>
-            <strong>Localização:</strong>
-            Belo Horizonte
-          </p>
-
-        </div>
-
-      </section>
-
-    </main>
-
-  </div>
-
-  <div class="modal" id="modal">
-
-    <div class="modal-content">
-
-      <h2>Nova Solicitação</h2>
-
-      <input type="text" id="nomeInput" placeholder="Nome do estudante">
-
-      <input type="text" id="motivoInput" placeholder="Motivo">
-
-      <button id="salvarSolicitacao">
-        Salvar
-      </button>
+        </main>
 
     </div>
 
-  </div>
+    <div class="modal" id="modal">
 
-  <script src="assets/js/Leonardo(psicologo).js"></script>
+        <div class="modal-content">
+
+            <h2>Nova Solicitação</h2>
+
+            <input
+                type="text"
+                id="nomeInput"
+                placeholder="Nome do estudante"
+            >
+
+            <input
+                type="text"
+                id="motivoInput"
+                placeholder="Motivo"
+            >
+
+            <button id="salvarSolicitacao">
+                Salvar
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="assets/js/Leonardo(psicologo).js"></script>
 
 </body>
-
 </html>

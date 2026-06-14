@@ -1,264 +1,373 @@
 const apiSolicitacoes = 'http://localhost:3000/solicitacoes';
 const apiAgenda = 'http://localhost:3000/agenda';
 
+let paginaAtual = localStorage.getItem("paginaAtual") || "dashboard";
+
 const menuItems = document.querySelectorAll('.menu-item');
 const pages = document.querySelectorAll('.page');
 
 menuItems.forEach(item => {
 
-  item.addEventListener('click', () => {
+    item.addEventListener('click', () => {
 
-    const page = item.getAttribute('data-page');
+        paginaAtual = item.dataset.page;
+        
+        localStorage.setItem("paginaAtual", paginaAtual);
 
-    pages.forEach(section => {
-      section.classList.remove('active-page');
+        pages.forEach(page => {
+            page.classList.remove('active-page');
+        });
+
+        menuItems.forEach(menu => {
+            menu.classList.remove('active');
+        });
+
+        document.getElementById(paginaAtual)
+            .classList.add('active-page');
+
+        item.classList.add('active');
+
     });
-
-    menuItems.forEach(menu => {
-      menu.classList.remove('active');
-    });
-
-    document.getElementById(page).classList.add('active-page');
-
-    item.classList.add('active');
-
-  });
 
 });
 
+function manterPaginaAtual() {
+
+    pages.forEach(page => {
+        page.classList.remove('active-page');
+    });
+
+    menuItems.forEach(menu => {
+        menu.classList.remove('active');
+    });
+
+    document.getElementById(paginaAtual)
+        .classList.add('active-page');
+
+    document
+        .querySelector(`[data-page="${paginaAtual}"]`)
+        .classList.add('active');
+
+}
+
 async function carregarSolicitacoes() {
 
-  const resposta = await fetch(apiSolicitacoes);
+    const resposta = await fetch(apiSolicitacoes);
+    const dados = await resposta.json();
 
-  const dados = await resposta.json();
+    const lista = document.getElementById('listaSolicitacoes');
+    const contador = document.getElementById('contadorSolicitacoes');
 
-  const lista = document.getElementById('listaSolicitacoes');
+    lista.innerHTML = '';
+    contador.innerText = dados.length;
 
-  const contador = document.getElementById('contadorSolicitacoes');
+    dados.forEach(item => {
 
-  lista.innerHTML = '';
+        lista.innerHTML += `
 
-  contador.innerText = dados.length;
+        <div class="card">
 
-  dados.forEach(solicitacao => {
+            <p><strong>${item.nome}</strong></p>
 
-    lista.innerHTML += `
+            <p>Motivo: ${item.motivo}</p>
 
-      <div class="card">
+            <div class="buttons">
 
-        <p>
-          <strong>${solicitacao.nome}</strong>
-        </p>
+                <button
+                    class="btn-aceitar"
+                    data-id="${item.id}"
+                    data-nome="${item.nome}">
+                    Aceitar
+                </button>
 
-        <p>
-          Motivo: ${solicitacao.motivo}
-        </p>
+                <button
+                    class="btn-recusar"
+                    data-id="${item.id}">
+                    Recusar
+                </button>
 
-        <div class="buttons">
-
-          <button 
-            class="btn-aceitar"
-            data-id="${solicitacao.id}"
-            data-nome="${solicitacao.nome}"
-          >
-            Aceitar
-          </button>
-
-          <button 
-            class="btn-recusar"
-            data-id="${solicitacao.id}"
-          >
-            Recusar
-          </button>
+            </div>
 
         </div>
 
-      </div>
-
-    `;
-
-  });
-
-  const aceitarBtns = document.querySelectorAll('.btn-aceitar');
-
-  aceitarBtns.forEach(btn => {
-
-    btn.addEventListener('click', () => {
-
-      const id = btn.getAttribute('data-id');
-
-      const nome = btn.getAttribute('data-nome');
-
-      aceitarSolicitacao(id, nome);
+        `;
 
     });
 
-  });
+    document.querySelectorAll('.btn-aceitar')
+        .forEach(btn => {
 
-  const recusarBtns = document.querySelectorAll('.btn-recusar');
+            btn.onclick = () => {
 
-  recusarBtns.forEach(btn => {
+                aceitarSolicitacao(
+                    btn.dataset.id,
+                    btn.dataset.nome
+                );
 
-    btn.addEventListener('click', () => {
+            };
 
-      const id = btn.getAttribute('data-id');
+        });
 
-      removerSolicitacao(id);
+    document.querySelectorAll('.btn-recusar')
+        .forEach(btn => {
 
-    });
+            btn.onclick = () => {
 
-  });
+                removerSolicitacao(
+                    btn.dataset.id
+                );
+
+            };
+
+        });
 
 }
 
 async function carregarAgenda() {
 
-  const resposta = await fetch(apiAgenda);
+    const resposta = await fetch(apiAgenda);
+    const dados = await resposta.json();
 
-  const dados = await resposta.json();
+    const lista = document.getElementById('listaAgenda');
+    const contador = document.getElementById('contadorAgenda');
 
-  const lista = document.getElementById('listaAgenda');
+    const filtro = document
+        .getElementById('pesquisaAgenda')
+        .value
+        .toLowerCase();
 
-  const contador = document.getElementById('contadorAgenda');
+    lista.innerHTML = '';
+    contador.innerText = dados.length;
 
-  lista.innerHTML = '';
+    dados
+        .filter(item =>
+            item.nome.toLowerCase().includes(filtro)
+        )
+        .forEach(item => {
 
-  contador.innerText = dados.length;
+            lista.innerHTML += `
 
-  dados.forEach(item => {
+            <div class="card">
 
-    lista.innerHTML += `
+                <p>
+                    <strong>${item.nome}</strong>
+                </p>
 
-      <div class="card">
+                <p>
+                    Horário: ${item.horario}
+                </p>
 
-        <p>
-          <strong>${item.nome}</strong>
-        </p>
+                <div class="buttons">
 
-        <p>
-          Horário: ${item.horario}
-        </p>
+                    <button
+                        class="btn-editar"
+                        data-id="${item.id}">
+                        Editar
+                    </button>
 
-      </div>
+                    <button
+                        class="btn-excluir"
+                        data-id="${item.id}">
+                        Excluir
+                    </button>
 
-    `;
+                </div>
 
-  });
+            </div>
+
+            `;
+
+        });
+
+    document.querySelectorAll('.btn-editar')
+        .forEach(btn => {
+
+            btn.onclick = () => {
+
+                editarHorario(btn.dataset.id);
+
+            };
+
+        });
+
+    document.querySelectorAll('.btn-excluir')
+        .forEach(btn => {
+
+            btn.onclick = () => {
+
+                excluirAtendimento(btn.dataset.id);
+
+            };
+
+        });
 
 }
 
 async function criarSolicitacao() {
 
-  const nome = document.getElementById('nomeInput').value;
+    const nome =
+        document.getElementById('nomeInput').value;
 
-  const motivo = document.getElementById('motivoInput').value;
+    const motivo =
+        document.getElementById('motivoInput').value;
 
-  if(nome === '' || motivo === '') {
+    if (!nome || !motivo) {
 
-    alert('Preencha todos os campos');
+        alert('Preencha todos os campos');
+        return;
 
-    return;
+    }
 
-  }
+    await fetch(apiSolicitacoes, {
 
-  await fetch(apiSolicitacoes, {
+        method: 'POST',
 
-    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
 
-    headers: {
-      'Content-Type': 'application/json'
-    },
+        body: JSON.stringify({
+            nome,
+            motivo
+        })
 
-    body: JSON.stringify({
+    });
 
-      nome: nome,
-      motivo: motivo
+    document.getElementById('nomeInput').value = '';
+    document.getElementById('motivoInput').value = '';
 
-    })
+    fecharModal();
 
-  });
+    await carregarSolicitacoes();
 
-  document.getElementById('nomeInput').value = '';
-
-  document.getElementById('motivoInput').value = '';
-
-  fecharModal();
-
-  carregarSolicitacoes();
+    manterPaginaAtual();
 
 }
 
 async function aceitarSolicitacao(id, nome) {
 
-  await fetch(apiAgenda, {
+    await fetch(apiAgenda, {
 
-    method: 'POST',
+        method: 'POST',
 
-    headers: {
-      'Content-Type': 'application/json'
-    },
+        headers: {
+            'Content-Type': 'application/json'
+        },
 
-    body: JSON.stringify({
+        body: JSON.stringify({
 
-      nome: nome,
-      horario: 'Horário a definir'
+            nome: nome,
+            horario: 'Horário a definir'
 
-    })
+        })
 
-  });
+    });
 
-  await fetch(`${apiSolicitacoes}/${id}`, {
+    await fetch(`${apiSolicitacoes}/${id}`, {
 
-    method: 'DELETE'
+        method: 'DELETE'
 
-  });
+    });
 
-  carregarSolicitacoes();
+    await carregarSolicitacoes();
+    await carregarAgenda();
 
-  carregarAgenda();
+    paginaAtual = "agenda";
+
+    manterPaginaAtual();
 
 }
 
 async function removerSolicitacao(id) {
 
-  await fetch(`${apiSolicitacoes}/${id}`, {
+    await fetch(`${apiSolicitacoes}/${id}`, {
 
-    method: 'DELETE'
+        method: 'DELETE'
 
-  });
+    });
 
-  carregarSolicitacoes();
+    await carregarSolicitacoes();
+
+    manterPaginaAtual();
+
+}
+
+async function editarHorario(id) {
+
+    const horario =
+        prompt('Digite o novo horário');
+
+    if (!horario) return;
+
+    await fetch(`${apiAgenda}/${id}`, {
+
+        method: 'PATCH',
+
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+            horario
+        })
+
+    });
+
+    await carregarAgenda();
+
+    manterPaginaAtual();
+
+}
+
+async function excluirAtendimento(id) {
+
+    await fetch(`${apiAgenda}/${id}`, {
+
+        method: 'DELETE'
+
+    });
+
+    await carregarAgenda();
+
+    manterPaginaAtual();
 
 }
 
 const modal = document.getElementById('modal');
 
-document.getElementById('abrirModal')
-.addEventListener('click', () => {
+document
+    .getElementById('abrirModal')
+    .onclick = () => {
 
-  modal.style.display = 'flex';
+        modal.style.display = 'flex';
 
-});
+    };
 
 function fecharModal() {
 
-  modal.style.display = 'none';
+    modal.style.display = 'none';
 
 }
 
-window.addEventListener('click', (e) => {
+window.onclick = (e) => {
 
-  if(e.target === modal) {
+    if (e.target === modal) {
 
-    fecharModal();
+        fecharModal();
 
-  }
+    }
 
-});
+};
 
-document.getElementById('salvarSolicitacao')
-.addEventListener('click', criarSolicitacao);
+document
+    .getElementById('salvarSolicitacao')
+    .onclick = criarSolicitacao;
 
+document
+    .getElementById('pesquisaAgenda')
+    .addEventListener('input', carregarAgenda);
+
+
+manterPaginaAtual();
 carregarSolicitacoes();
-
 carregarAgenda();
