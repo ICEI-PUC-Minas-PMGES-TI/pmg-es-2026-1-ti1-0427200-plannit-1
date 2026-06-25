@@ -1,29 +1,20 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
-
 body{
     background:#f5f5f5;
 }
 
 /* HEADER */
 
-header{
-    background:#4f8bd8;
-    padding:15px 30px;
-}
-
 .barra-info{
+    background:#4f8bd8;
+    padding:10px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .logo img{
-    height:70px;
+    height:50px;
+    cursor: pointer;
 }
 
 .busca input{
@@ -111,8 +102,9 @@ header{
 .perfil-descricao{
     background:#4f8bd8;
     color:white;
-    padding:25px;
-    margin-bottom:20px;
+    font-size: 30px;
+    padding:5px;
+    margin-bottom:10px;
 }
 
 .perfil-descricao h2{
@@ -136,6 +128,6 @@ header{
 footer{
     background:#4f8bd8;
     text-align:center;
-    padding:15px;
-    font-size:22px;
+    padding:10px;
+    font-size:15px;
 }

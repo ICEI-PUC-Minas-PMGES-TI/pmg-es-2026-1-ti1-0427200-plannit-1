@@ -7,6 +7,13 @@
     padding: 10px 20px;
 }
 
+.menu{
+    background-color: #4f83c2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /* Logo */
 .logo img {
     height: 50px;
@@ -58,6 +65,7 @@
 
 body{
     background-color: #3cbf8a;
+    margin: 0;
 }
 
 main{
