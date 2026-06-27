@@ -80,4 +80,5 @@ main h1{
 main p{
     text-align: justify;
     font-size: 30px;
+    padding: 5px;
 }
