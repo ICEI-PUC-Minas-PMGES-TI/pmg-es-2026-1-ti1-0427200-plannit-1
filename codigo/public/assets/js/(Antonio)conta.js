@@ -6,20 +6,31 @@ fetch("conta.json")
 
     dadosUsuario = dados;
 
-    document.getElementById("nomeUsuario").textContent =
-        dados.usuario.nome;
+    const usuarioStorage =
+    JSON.parse(localStorage.getItem("usuario"));
 
-    document.getElementById("cursoUsuario").textContent =
-        dados.usuario.curso;
+    if(usuarioStorage){
 
-    document.getElementById("idadeUsuario").textContent =
-        dados.usuario.idade + " anos";
+        document.getElementById("nomeUsuario").textContent =
+            usuarioStorage.nome;
 
-    document.getElementById("membroDesde").textContent =
-        "Usuário desde " + dados.usuario.membroDesde;
+        document.getElementById("idadeUsuario").textContent =
+            usuarioStorage.idade + " anos";
 
-    document.getElementById("descricaoUsuario").textContent =
-        dados.usuario.descricao;
+        document.getElementById("membroDesde").textContent =
+            "Usuário desde " + usuarioStorage.dataCadastro;
+
+    } else {
+
+        document.getElementById("nomeUsuario").textContent =
+            dados.usuario.nome;
+
+        document.getElementById("idadeUsuario").textContent =
+            dados.usuario.idade + " anos";
+
+        document.getElementById("membroDesde").textContent =
+            "Usuário desde " + dados.usuario.membroDesde;
+    }
 });
 
 function mostrarConteudo(tipo){
