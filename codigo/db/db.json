@@ -1,25 +1,49 @@
 {
-  "usuarios": [
+  "users": [
     {
-      "id": 1,
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
+      "login": "Leo",
+      "senha": "Leo",
+      "nome": "Leo",
+      "email": "Leo",
+      "tipo": "cliente",
+      "id": "KhoW7jET6z0"
     },
     {
-      "id": 2,
-      "login": "user",
-      "senha": "123",
-      "nome": "Usuario Comum",
-      "email": "user@abc.com"
-    },
-    {
-      "login": "rommel",
-      "senha": "123",
-      "nome": "Rommel",
-      "email": "rommel@gmail.com",
-      "id": 3
+      "login": "Caio",
+      "senha": "Caio",
+      "nome": "Caio",
+      "email": "Caio",
+      "tipo": "psicologo",
+      "psicologoId": "nGyAsWyEm54",
+      "id": "cSLyPI7v3s0"
     }
-  ]
+  ],
+  "psicologos": [
+    {
+      "crp": "04/1234",
+      "especialidade": "Ansiedade",
+      "cidade": "Belo Horizonte",
+      "tipoAtendimento": "Ambos",
+      "telefone": "31983620578",
+      "valor": 120,
+      "duracao": 50,
+      "descricao": "Psicólogo clínico.",
+      "id": "nGyAsWyEm54",
+      "userId": "cSLyPI7v3s0"
+    }
+  ],
+  "solicitacoes": [
+    {
+      "clienteId": "KhoW7jET6z0",
+      "clienteNome": "Leo",
+      "psicologoId": "nGyAsWyEm54",
+      "psicologoNome": "Caio",
+      "data": "2026-06-28",
+      "horario": "08:00",
+      "status": "cancelada",
+      "id": "k2uqk8byuSM"
+    }
+  ],
+  "agenda": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }

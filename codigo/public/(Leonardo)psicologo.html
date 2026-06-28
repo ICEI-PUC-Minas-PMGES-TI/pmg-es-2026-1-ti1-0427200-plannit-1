@@ -4,150 +4,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Área do Psicólogo - Plannit</title>
-
+  <title>Plannit - Área do Psicólogo</title>
   <link rel="stylesheet" href="assets/css/(Leonardo)psicologo.css">
 </head>
 
 <body>
 
-  <header class="topbar">
-
-    <h2>Plannit - Psicólogo</h2>
-
-    <button class="logout-btn">
-      Sair
-    </button>
-
-  </header>
+  <!-- Componente Header Global -->
+  <div id="header-plannit"></div>
+  <script src="./assets/js/header.js"></script>
 
   <div class="container">
 
     <aside class="sidebar">
-
       <ul>
-
-        <li class="menu-item active" data-page="dashboard">
-          Dashboard
-        </li>
-
-        <li class="menu-item" data-page="agenda">
-          Agenda
-        </li>
-
-        <li class="menu-item" data-page="solicitacoes">
-          Solicitações
-        </li>
-
-        <li class="menu-item" data-page="perfil">
-          Perfil
-        </li>
-
+        <li class="menu-item active" data-page="consultas">Consultas</li>
+        <li class="menu-item" data-page="agenda">Agenda</li>
+        <li class="menu-item" data-page="perfil">Perfil</li>
       </ul>
-
     </aside>
 
     <main class="content">
 
-      <section id="dashboard" class="page active-page">
-
-        <h2>Dashboard</h2>
-
-        <div class="cards">
-
-          <div class="card">
-            <h3 id="contadorAgenda">0</h3>
-            <p>Atendimentos</p>
-          </div>
-
-          <div class="card">
-            <h3 id="contadorSolicitacoes">0</h3>
-            <p>Solicitações Pendentes</p>
-          </div>
-
-          <div class="card">
-            <h3>5</h3>
-            <p>Horários disponíveis</p>
-          </div>
-
+      <!-- ABA CONSULTAS -->
+      <section id="consultas" class="page active-page">
+        <h2>Consultas</h2>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filtro="confirmada">Marcadas</button>
+          <button class="filter-btn" data-filtro="cancelada">Canceladas</button>
+          <button class="filter-btn" data-filtro="todas">Histórico</button>
         </div>
-
+        <div id="listaConsultas"></div>
       </section>
 
+      <!-- ABA AGENDA -->
       <section id="agenda" class="page">
-
         <h2>Agenda</h2>
-
+        <div class="form-group-agenda">
+          <label for="agendaData"><strong>Data:</strong></label>
+          <input type="date" id="agendaData">
+        </div>
         <div id="listaAgenda"></div>
-
       </section>
 
-      <section id="solicitacoes" class="page">
-
-        <div class="topo-solicitacoes">
-
-          <h2>Solicitações</h2>
-
-          <button id="abrirModal">
-            Nova Solicitação
-          </button>
-
-        </div>
-
-        <div id="listaSolicitacoes"></div>
-
-      </section>
-
+      <!-- ABA PERFIL -->
       <section id="perfil" class="page">
-
         <h2>Perfil</h2>
-
-        <div class="card">
-
-          <p>
-            <strong>Nome:</strong>
-            Dr. João Silva
-          </p>
-
-          <p>
-            <strong>Especialidade:</strong>
-            Ansiedade
-          </p>
-
-          <p>
-            <strong>Tipo:</strong>
-            Online / Presencial
-          </p>
-
-          <p>
-            <strong>Localização:</strong>
-            Belo Horizonte
-          </p>
-
-        </div>
-
+        <div class="card" id="perfilCard"></div>
       </section>
 
     </main>
-
-  </div>
-
-  <div class="modal" id="modal">
-
-    <div class="modal-content">
-
-      <h2>Nova Solicitação</h2>
-
-      <input type="text" id="nomeInput" placeholder="Nome do estudante">
-
-      <input type="text" id="motivoInput" placeholder="Motivo">
-
-      <button id="salvarSolicitacao">
-        Salvar
-      </button>
-
-    </div>
 
   </div>
 

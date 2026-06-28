@@ -1,138 +1,144 @@
-// Trabalho Interdisciplinar 1 - Aplicações Web
-//
-// Esse módulo realiza o registro de novos usuários e login para aplicações com 
-// backend baseado em API REST provida pelo JSONServer
-// Os dados de usuário estão localizados no arquivo db.json que acompanha este projeto.
-//
-// Autor: Rommel Vieira Carneiro (rommelcarneiro@gmail.com)
-// Data: 09/09/2024
-//
-// Código LoginApp  
+const API = "http://localhost:3000";
 
+document.addEventListener("DOMContentLoaded", () => {
+    const inputLogin = document.getElementById("loginInput");
+    const inputSenha = document.getElementById("senhaInput");
+    const btnLogin = document.getElementById("btnLogin");
+    const loginForm = document.getElementById("login-form");
 
-// Página inicial de Login
-const LOGIN_URL = "/modulos/login/login.html";
-let RETURN_URL = "/modulos/login/index.html";
-const API_URL = '/usuarios';
+    // === LOGIN ===
+    const executarLogin = async (e) => {
+        if (e) e.preventDefault();
+        const login = inputLogin ? inputLogin.value.trim() : "";
+        const senha = inputSenha ? inputSenha.value.trim() : "";
 
-// Objeto para o banco de dados de usuários baseado em JSON
-var db_usuarios = {};
-
-// Objeto para o usuário corrente
-var usuarioCorrente = {};
-
-// Inicializa a aplicação de Login
-function initLoginApp () {
-    let pagina = window.location.pathname;
-    if (pagina != LOGIN_URL) {
-        // CONFIGURA A URLS DE RETORNO COMO A PÁGINA ATUAL
-        sessionStorage.setItem('returnURL', pagina);
-        RETURN_URL = pagina;
-
-        // INICIALIZA USUARIOCORRENTE A PARTIR DE DADOS NO LOCAL STORAGE, CASO EXISTA
-        usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
-        if (usuarioCorrenteJSON) {
-            usuarioCorrente = JSON.parse (usuarioCorrenteJSON);
-        } else {
-            window.location.href = LOGIN_URL;
+        if (!login || !senha) {
+            alert("Preencha login e senha.");
+            return;
         }
 
-        // REGISTRA LISTENER PARA O EVENTO DE CARREGAMENTO DA PÁGINA PARA ATUALIZAR INFORMAÇÕES DO USUÁRIO
-        document.addEventListener('DOMContentLoaded', function () {
-            showUserInfo ('userInfo');
-        });
-    }
-    else {
-        // VERIFICA SE A URL DE RETORNO ESTÁ DEFINIDA NO SESSION STORAGE, CASO CONTRARIO USA A PÁGINA INICIAL
-        let returnURL = sessionStorage.getItem('returnURL');
-        RETURN_URL = returnURL || RETURN_URL
-        
-        // INICIALIZA BANCO DE DADOS DE USUÁRIOS
-        carregarUsuarios(() => {
-            console.log('Usuários carregados...');
-        });
-    }
-};
+        try {
+            const res = await fetch(`${API}/users`);
+            const users = await res.json();
+            const user = users.find(u => u.login === login && u.senha === senha);
 
-
-function carregarUsuarios(callback) {
-    fetch(API_URL)
-    .then(response => response.json())
-    .then(data => {
-        db_usuarios = data;
-        callback ()
-    })
-    .catch(error => {
-        console.error('Erro ao ler usuários via API JSONServer:', error);
-        displayMessage("Erro ao ler usuários");
-    });
-}
-
-// Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
-function loginUser (login, senha) {
-
-    // Verifica todos os itens do banco de dados de usuarios 
-    // para localizar o usuário informado no formulario de login
-    for (var i = 0; i < db_usuarios.length; i++) {
-        var usuario = db_usuarios[i];
-
-        // Se encontrou login, carrega usuário corrente e salva no Session Storage
-        if (login == usuario.login && senha == usuario.senha) {
-            usuarioCorrente.id = usuario.id;
-            usuarioCorrente.login = usuario.login;
-            usuarioCorrente.email = usuario.email;
-            usuarioCorrente.nome = usuario.nome;
-
-            // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
-            sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
-
-            // Retorna true para usuário encontrado
-            return true;
+            if (user) {
+                sessionStorage.setItem("usuarioCorrente", JSON.stringify(user));
+                if (user.tipo === "psicologo") {
+                    window.location.href = "../../(Leonardo)psicologo.html";
+                } else {
+                    window.location.href = "../../(Gabriel)contato_psicologo.html";
+                }
+            } else {
+                alert("Login ou senha incorretos.");
+            }
+        } catch (err) {
+            console.error("Erro no login:", err);
+            alert("Erro ao conectar. Verifique se o json-server está rodando.");
         }
-    }
+    };
 
-    // Se chegou até aqui é por que não encontrou o usuário e retorna falso
-    return false;
-}
+    if (btnLogin) btnLogin.addEventListener("click", executarLogin);
+    if (loginForm) loginForm.addEventListener("submit", executarLogin);
 
-// Apaga os dados do usuário corrente no sessionStorage
-function logoutUser () {
-    sessionStorage.removeItem ('usuarioCorrente');
-    window.location = LOGIN_URL;
-}
-
-function addUser (nome, login, senha, email) {
-
-    // Cria um objeto de usuario para o novo usuario 
-    let usuario = { "login": login, "senha": senha, "nome": nome, "email": email };
-
-    // Envia dados do novo usuário para ser inserido no JSON Server
-    fetch(API_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(usuario),
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Adiciona o novo usuário na variável db_usuarios em memória
-            db_usuarios.push (usuario);
-            displayMessage("Usuário inserido com sucesso");
-        })
-        .catch(error => {
-            console.error('Erro ao inserir usuário via API JSONServer:', error);
-            displayMessage("Erro ao inserir usuário");
+    // === TOGGLE CAMPOS PSICÓLOGO ===
+    const selectTipo = document.getElementById("txt_tipo");
+    const camposPsi = document.getElementById("campos_psicologo");
+    if (selectTipo && camposPsi) {
+        selectTipo.addEventListener("change", () => {
+            camposPsi.style.display = selectTipo.value === "psicologo" ? "block" : "none";
         });
-}
-
-function showUserInfo (element) {
-    var elemUser = document.getElementById(element);
-    if (elemUser) {
-        elemUser.innerHTML = `${usuarioCorrente.nome} (${usuarioCorrente.login}) 
-                    <a onclick="logoutUser()">❌</a>`;
     }
-}
 
-// Inicializa as estruturas utilizadas pelo LoginApp
-initLoginApp ();
+    // === REGISTRO ===
+    const btnSalvar = document.getElementById("btn_salvar");
+    if (btnSalvar) {
+        btnSalvar.addEventListener("click", async () => {
+            const tipo = selectTipo ? selectTipo.value : "cliente";
+            const login = document.getElementById("txt_login")?.value.trim() || "";
+            const nome = document.getElementById("txt_nome")?.value.trim() || "";
+            const email = document.getElementById("txt_email")?.value.trim() || "";
+            const senha = document.getElementById("txt_senha")?.value || "";
+            const senha2 = document.getElementById("txt_senha2")?.value || "";
+
+            if (!login || !nome || !email || !senha) {
+                alert("Preencha todos os campos obrigatórios.");
+                return;
+            }
+            if (senha !== senha2) {
+                alert("As senhas não conferem.");
+                return;
+            }
+
+            try {
+                // Check duplicate login
+                const res = await fetch(`${API}/users`);
+                const users = await res.json();
+                if (users.some(u => u.login === login)) {
+                    alert("Este login já existe.");
+                    return;
+                }
+
+                let psicologoId = null;
+
+                // If psychologist, create profile first
+                if (tipo === "psicologo") {
+                    const psiData = {
+                        crp: document.getElementById("txt_crp")?.value.trim() || "00/00000",
+                        especialidade: document.getElementById("txt_especialidade")?.value.trim() || "Geral",
+                        cidade: document.getElementById("txt_cidade")?.value.trim() || "Não informada",
+                        tipoAtendimento: document.getElementById("txt_tipoAtendimento")?.value || "Online",
+                        telefone: document.getElementById("txt_telefone")?.value.trim() || "",
+                        valor: Number(document.getElementById("txt_valor")?.value) || 120,
+                        duracao: Number(document.getElementById("txt_duracao")?.value) || 50,
+                        descricao: document.getElementById("txt_descricao")?.value.trim() || "Psicólogo clínico."
+                    };
+
+                    const psiRes = await fetch(`${API}/psicologos`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(psiData)
+                    });
+                    const psiCriado = await psiRes.json();
+                    psicologoId = psiCriado.id;
+                }
+
+                // Create user
+                const novoUser = {
+                    login, senha, nome, email, tipo,
+                    ...(psicologoId !== null ? { psicologoId } : {})
+                };
+
+                const postRes = await fetch(`${API}/users`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(novoUser)
+                });
+
+                if (postRes.ok) {
+                    const userCriado = await postRes.json();
+
+                    // Update psicologos.userId
+                    if (tipo === "psicologo" && psicologoId !== null) {
+                        await fetch(`${API}/psicologos/${psicologoId}`, {
+                            method: "PATCH",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ userId: userCriado.id })
+                        });
+                    }
+
+                    alert("Usuário registrado com sucesso! Faça login.");
+
+                    // Close modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById("registerModal"));
+                    if (modal) modal.hide();
+                } else {
+                    alert("Erro ao salvar usuário.");
+                }
+            } catch (err) {
+                console.error("Erro no registro:", err);
+                alert("Erro de comunicação com o servidor.");
+            }
+        });
+    }
+});
