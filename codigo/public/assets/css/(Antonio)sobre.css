@@ -1,84 +1,143 @@
-/* Barra superior */
+/* CSS Padronizado de acordo com index.html e (Leonardo)psicologo.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #333333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: #1e3a5f;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
 .barra-info {
-    background-color: #4f83c2;
+    height: 70px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    align-items: center;
+    padding: 0 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 20px;
 }
 
-.menu{
-    background-color: #4f83c2;
+.logo {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
 }
 
-/* Logo */
 .logo img {
-    height: 50px;
-    cursor: pointer;
+    height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
-/* Barra de busca */
+.logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 .busca {
     position: relative;
-    width: 40%;
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
 }
 
 .busca input {
     width: 100%;
-    padding: 10px 40px 10px 15px;
+    padding: 10px 38px 10px 18px;
     border-radius: 25px;
-    border: none;
+    border: 1px solid #334155;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 0.95rem;
     outline: none;
-    font-size: 16px;
-}
-
-/* Ícone da lupa */
-.icone-busca {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/* Menu */
-.menu ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
     transition: 0.3s;
 }
 
-.menu a:hover {
-    text-decoration: underline;
+.busca input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
 }
 
-body{
-    background-color: #3cbf8a;
-    margin: 0;
+.icone-busca {
+    position: absolute;
+    right: 15px;
+    font-size: 1.1rem;
+    color: #64748b;
+    cursor: pointer;
 }
 
-main{
-    color: white;
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    align-items: center;
 }
 
-main h1{
+.menu a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.menu a:hover,
+.menu a.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+main {
+    flex: 1;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.card-sobre {
+    background: white;
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-top: 8px solid #2563eb;
+}
+
+.card-sobre h1 {
+    font-size: 2.5rem;
+    color: #1e3a5f;
+    margin-bottom: 25px;
     text-align: center;
-    font-size: 60px;
+    font-weight: 800;
 }
 
-main p{
+.card-sobre p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #475569;
     text-align: justify;
-    font-size: 30px;
-    padding: 5px;
+    margin-bottom: 20px;
 }

@@ -2,220 +2,193 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f3f3f3;
-}
-
-/* HEADER */
-
-header {
-    background: linear-gradient(90deg, #3b82f6, #34d399);
-    padding: 15px 40px;
-}
-
-.barra-info {
+    background: #f4f7fb;
+    color: #333333;
+    min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-.logo img {
-    width: 75px;
-}
-
-/* BUSCA */
-
-.busca {
-    position: relative;
-}
-
-.busca input {
-    width: 420px;
-    padding: 14px 45px;
-    border-radius: 14px;
-    border: none;
-    outline: none;
-    font-size: 15px;
-}
-
-.icone-busca {
-    position: absolute;
-    left: 15px;
-    top: 11px;
-    font-size: 22px;
-}
-
-/* MENU */
-
-.menu ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.menu a:hover {
-    opacity: 0.8;
-}
-
-/* TOPO */
-
+/* TOPO COM BANNER ESTILO COMUNIDADE */
 .topo-config {
-    background: linear-gradient(90deg, #34d399, #3b82f6);
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     color: white;
+    padding: 60px 20px;
     text-align: center;
-    padding: 55px 20px;
 }
 
 .topo-config h1 {
-    font-size: 55px;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .topo-config p {
-    font-size: 20px;
+    font-size: 1.15rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-/* CONTAINER */
-
+/* CONTAINER PRINCIPAL */
 .container {
-    width: 80%;
+    flex: 1;
+    max-width: 1000px;
     margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
 }
 
-/* CARDS */
-
+/* CARDS DE SEÇÃO */
 .card-config {
-    background-color: white;
-    border-radius: 18px;
-    padding: 30px;
-    margin-bottom: 35px;
-
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
 }
 
 .titulo-card {
     margin-bottom: 25px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 15px;
 }
 
 .titulo-card h2 {
-    font-size: 34px;
+    font-size: 1.8rem;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .titulo-card p {
-    color: #666;
-    font-size: 16px;
+    color: #64748b;
+    font-size: 0.95rem;
 }
 
 .azul h2 {
-    color: #2563eb;
+    color: #1e3a5f;
 }
 
 .verde h2 {
     color: #10b981;
 }
 
-/* ITENS */
-
+/* ITENS DE CONFIGURAÇÃO */
 .item-config {
-    border: 1px solid #ddd;
+    border: 1px solid #e2e8f0;
     border-radius: 14px;
-
-    padding: 22px;
-    margin-bottom: 18px;
-
+    padding: 20px 25px;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: #f8fafc;
+    transition: 0.3s ease;
+}
+
+.item-config:hover {
+    border-color: #cbd5e1;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .item-config h3 {
-    margin-bottom: 5px;
-    font-size: 20px;
+    margin-bottom: 6px;
+    font-size: 1.15rem;
+    color: #1e3a5f;
 }
 
 .item-config p {
-    color: #666;
+    color: #64748b;
+    font-size: 0.9rem;
 }
 
 .item-config button {
-    background-color: #3b82f6;
+    background: #2563eb;
     color: white;
-
     border: none;
     border-radius: 10px;
-
-    padding: 12px 22px;
-
+    padding: 10px 20px;
     cursor: pointer;
-
-    font-size: 15px;
-    font-weight: bold;
-
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     transition: 0.3s;
+    white-space: nowrap;
 }
 
 .item-config button:hover {
-    background-color: #2563eb;
+    background: #1d4ed8;
+    transform: translateY(-2px);
 }
 
-/* AÇÕES */
-
+/* AÇÕES DE RODAPÉ DO CARD */
 .acoes {
     display: flex;
-    justify-content: center;
-    gap: 25px;
-
-    margin-top: 40px;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
 }
 
 .acoes button {
     border: none;
-    border-radius: 12px;
-
-    padding: 18px 28px;
-
+    border-radius: 10px;
+    padding: 12px 24px;
     color: white;
-
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
-
     cursor: pointer;
-
     transition: 0.3s;
 }
 
 .acoes button:hover {
-    transform: scale(1.04);
+    transform: translateY(-2px);
 }
 
 .btn-salvar {
-    background-color: #10b981;
+    background: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.btn-salvar:hover {
+    background: #059669;
 }
 
 .btn-excluir {
-    background-color: #ef4444;
+    background: #ef4444;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
 }
 
-/* FOOTER */
+.btn-excluir:hover {
+    background: #dc2626;
+}
 
-footer {
-    background-color: #3b82f6;
-    color: white;
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .item-config {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
 
-    text-align: center;
+    .item-config button {
+        align-self: stretch;
+        text-align: center;
+    }
 
-    padding: 20px;
+    .acoes {
+        flex-direction: column;
+    }
 
-    margin-top: 40px;
+    .acoes button {
+        width: 100%;
+    }
 }

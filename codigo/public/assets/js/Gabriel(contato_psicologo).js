@@ -1,5 +1,17 @@
-let psicologoIdSelecionado = null;
-let psicologoSelecionado = "";
+
+const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
+if (!usuarioLogado) {
+    window.location.href = 'modulos/login/login.html';
+} else if (usuarioLogado.tipo === 'psicologo') {
+    window.location.href = '(Leonardo)psicologo.html';
+}
+
+const logoutCliente = document.getElementById('logoutCliente');
+if (logoutCliente) {
+    logoutCliente.addEventListener('click', () => {
+        sessionStorage.removeItem('usuarioCorrente');
+    });
+}
 
 const headers = document.querySelectorAll('.filtro-header');
 
@@ -12,9 +24,9 @@ headers.forEach(header => {
 
         opcoes.classList.toggle('active');
 
-        if(opcoes.classList.contains('active')){
+        if (opcoes.classList.contains('active')) {
             toggle.textContent = '-';
-        }else{
+        } else {
             toggle.textContent = '+';
         }
 
@@ -24,123 +36,152 @@ headers.forEach(header => {
 
 
 
-const checks = document.querySelectorAll('.filtro-check');
-const psicologos = document.querySelectorAll('.psicologo');
-
-checks.forEach(check => {
-
-    check.addEventListener('change', () => {
-
-        psicologos.forEach(card => {
-
-            card.style.display = 'none';
-
-        });
-
-        const selecionados = [];
-
-        document.querySelectorAll('.filtro-check:checked').forEach(item => {
-
-            selecionados.push(item.value);
-
-        });
-
-        if(selecionados.length === 0){
-
-            psicologos.forEach(card => {
-
-                card.style.display = 'block';
-
-            });
-
-        }else{
-
-            psicologos.forEach(card => {
-
-                const tipo = card.getAttribute('data-tipo');
-                const especialidade = card.getAttribute('data-especialidade');
-                const avaliacao = card.getAttribute('data-avaliacao');
-                const preco = card.getAttribute('data-preco');
-                const disponibilidade = card.getAttribute('data-disponibilidade');
-
-                if(
-                    selecionados.includes(tipo) ||
-                    selecionados.includes(especialidade) ||
-                    selecionados.includes(avaliacao) ||
-                    selecionados.includes(preco) ||
-                    selecionados.includes(disponibilidade)
-                ){
-
-                    card.style.display = 'block';
-
-                }
-
-            });
-
-        }
-
-    });
-
-});
-
-
-
-const visitarBtns = document.querySelectorAll('.visitar');
-console.log("Botões encontrados:", visitarBtns.length);
-
 const paginaLista = document.getElementById('pagina-lista');
 const perfilPage = document.getElementById('perfil-page');
 
-visitarBtns.forEach(btn => {
+let listaPsicologosDados = [];
 
-    btn.addEventListener('click', () => {
+async function carregarPsicologos() {
+    try {
+        const res = await fetch("http://localhost:3000/psicologos");
+        listaPsicologosDados = await res.json();
+        filtrarERenderizar();
+    } catch (err) {
+        console.error("Erro ao carregar psicólogos:", err);
+    }
+}
 
-        const card = btn.closest('.card');
+function abrirPerfil(psi) {
+    if (paginaLista) paginaLista.style.display = 'none';
+    if (perfilPage) {
+        perfilPage.classList.add('active');
+        perfilPage.style.display = 'block';
 
-        psicologoIdSelecionado =
-            card.getAttribute("data-id");
+        const perfilInfo = perfilPage.querySelector('.perfil-info div:nth-child(2)');
+        if (perfilInfo) {
+            perfilInfo.innerHTML = `
+                <p><strong>Nome: ${psi.nome}</strong></p>
+                <p class="status">🟢 ${psi.status || 'Online'}</p>
+                <p>Psicólogo Clínico - ${psi.cidade || 'Belo Horizonte'}</p>
+                <p>✔ CRP Verificado: ${psi.crp || '04/00000'}</p>
+            `;
+        }
+        const avaliacaoDiv = perfilPage.querySelector('.perfil-top > div:nth-child(2)');
+        if (avaliacaoDiv) {
+            avaliacaoDiv.innerHTML = `⭐ ${psi.avaliacao || 5.0}`;
+        }
+        const sobreP = perfilPage.querySelector('h4:nth-of-type(1) + p');
+        if (sobreP) {
+            sobreP.textContent = psi.descricao || 'Especialista em psicologia clínica.';
+        }
+        const espP = perfilPage.querySelector('h4:nth-of-type(2) + p');
+        if (espP) {
+            espP.textContent = `[${psi.especialidade || 'Psicologia'}]`;
+        }
+        const infoP = perfilPage.querySelector('h4:nth-of-type(3) + p');
+        if (infoP) {
+            infoP.innerHTML = `
+                💰 Valor: R$${psi.valor || 120} <br>
+                ⏱ Sessão: ${psi.duracao || 50} minutos <br>
+                💻 Atendimento ${psi.tipoAtendimento || 'Online'} <br>
+                📍 ${psi.cidade || 'Belo Horizonte - MG'}
+            `;
+        }
+    }
+    sessionStorage.setItem('psicologoSelecionado', JSON.stringify(psi));
+}
 
-        psicologoSelecionado =
-            card.querySelector(".top-card strong")
-                .textContent
-                .replace("Nome: ", "");
+function filtrarERenderizar() {
+    const container = document.getElementById("lista-psicologos");
+    if (!container) return;
 
-        console.log("ID selecionado:", psicologoIdSelecionado);
-        console.log("Nome selecionado:", psicologoSelecionado);
+    const selecionados = Array.from(document.querySelectorAll('.filtro-check:checked')).map(item => item.value);
+    const campoPesquisa = document.getElementById('pesquisa');
+    const textoPesquisa = campoPesquisa ? campoPesquisa.value.toLowerCase() : "";
 
-        paginaLista.style.display = "none";
+    container.innerHTML = "";
 
-        perfilPage.classList.add("active");
+    if (listaPsicologosDados.length === 0) {
+        container.innerHTML = "<p style='padding: 20px;'>Nenhum psicólogo encontrado no banco de dados.</p>";
+        return;
+    }
 
-    });
+    listaPsicologosDados.forEach(psi => {
+        const tipo = (psi.tipoAtendimento || "online").toLowerCase();
+        const especialidadeNorm = (psi.especialidade || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const avaliacaoStr = Math.floor(psi.avaliacao || 5).toString();
 
-});
+        let precoStr = "medio";
+        if (psi.valor <= 80) precoStr = "baixo";
+        else if (psi.valor > 150) precoStr = "alto";
 
-/* PESQUISA POR NOME */
+        const disponibilidadeStr = (Number(psi.id) % 2 !== 0) ? "hoje" : "semana";
 
-const campoPesquisa = document.getElementById('pesquisa');
-
-campoPesquisa.addEventListener('keyup', () => {
-
-    const texto = campoPesquisa.value.toLowerCase();
-
-    psicologos.forEach(card => {
-
-        const nome = card.textContent.toLowerCase();
-
-        if(nome.includes(texto)){
-
-            card.style.display = 'block';
-
-        }else{
-
-            card.style.display = 'none';
-
+        let passaCheck = false;
+        if (selecionados.length === 0) {
+            passaCheck = true;
+        } else {
+            if (
+                selecionados.includes(tipo) ||
+                selecionados.includes(especialidadeNorm) ||
+                selecionados.includes(avaliacaoStr) ||
+                selecionados.includes(precoStr) ||
+                selecionados.includes(disponibilidadeStr)
+            ) {
+                passaCheck = true;
+            }
         }
 
-    });
+        const passaTexto = !textoPesquisa || psi.nome.toLowerCase().includes(textoPesquisa) || (psi.especialidade && psi.especialidade.toLowerCase().includes(textoPesquisa));
 
+        if (passaCheck && passaTexto) {
+            const card = document.createElement("div");
+            card.className = "card psicologo";
+            card.setAttribute("data-tipo", tipo);
+            card.setAttribute("data-especialidade", especialidadeNorm);
+            card.setAttribute("data-avaliacao", avaliacaoStr);
+            card.setAttribute("data-preco", precoStr);
+            card.setAttribute("data-disponibilidade", disponibilidadeStr);
+
+            const estrelas = "⭐".repeat(Math.round(psi.avaliacao || 5));
+
+            card.innerHTML = `
+                <h3>Perfil de psicólogo</h3>
+                <div class="top-card">
+                    <div class="foto"></div>
+                    <div>
+                        <p><strong>Nome: ${psi.nome}</strong></p>
+                        <p><small>${psi.cidade || 'Belo Horizonte'}</small></p>
+                    </div>
+                </div>
+                <p><strong>Especialidade:</strong> ${psi.especialidade || 'Geral'}</p>
+                <p><strong>Valor:</strong> R$ ${psi.valor || 120} (${psi.tipoAtendimento || 'Online'})</p>
+                <p>
+                    <strong>Avaliação</strong>
+                    <span class="avaliacao">${estrelas}</span>
+                </p>
+                <button class="btn visitar">Visitar perfil</button>
+            `;
+
+            card.querySelector(".visitar").addEventListener("click", () => {
+                abrirPerfil(psi);
+            });
+
+            container.appendChild(card);
+        }
+    });
+}
+
+document.querySelectorAll('.filtro-check').forEach(check => {
+    check.addEventListener('change', filtrarERenderizar);
 });
+
+const campoPesquisa = document.getElementById('pesquisa');
+if (campoPesquisa) {
+    campoPesquisa.addEventListener('keyup', filtrarERenderizar);
+}
+
+carregarPsicologos();
 
 /* ABRIR AGENDAMENTO */
 
@@ -158,15 +199,15 @@ btnAgendar.addEventListener('click', () => {
 
 /* BOTÃO VOLTAR */
 
-function voltarPagina(){
+function voltarPagina() {
 
-    if(agendamentoPage.classList.contains('active')){
+    if (agendamentoPage.classList.contains('active')) {
 
         agendamentoPage.classList.remove('active');
 
         perfilPage.style.display = 'block';
 
-    }else if(perfilPage.classList.contains('active')){
+    } else if (perfilPage.classList.contains('active')) {
 
         perfilPage.classList.remove('active');
 
@@ -198,30 +239,30 @@ let mesAtual = 5;
 const mesTexto = document.getElementById('mes-texto');
 
 document.getElementById('proximo-mes')
-.addEventListener('click', () => {
+    .addEventListener('click', () => {
 
-    mesAtual++;
+        mesAtual++;
 
-    if(mesAtual > 11){
-        mesAtual = 0;
-    }
+        if (mesAtual > 11) {
+            mesAtual = 0;
+        }
 
-    mesTexto.textContent = meses[mesAtual];
+        mesTexto.textContent = meses[mesAtual];
 
-});
+    });
 
 document.getElementById('mes-anterior')
-.addEventListener('click', () => {
+    .addEventListener('click', () => {
 
-    mesAtual--;
+        mesAtual--;
 
-    if(mesAtual < 0){
-        mesAtual = 11;
-    }
+        if (mesAtual < 0) {
+            mesAtual = 11;
+        }
 
-    mesTexto.textContent = meses[mesAtual];
+        mesTexto.textContent = meses[mesAtual];
 
-});
+    });
 
 const horarios = document.querySelectorAll(".hora");
 
@@ -229,39 +270,24 @@ horarios.forEach(horario => {
 
     horario.addEventListener("click", () => {
 
-        console.log("Clique no horário:", horario.textContent);
+        const usr = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
+        const psiSel = JSON.parse(sessionStorage.getItem("psicologoSelecionado")) || { nome: "Dr. João Silva", id: 1 };
+        const agendamento = {
+            paciente: usr ? usr.nome : "Gabriel Oliveira",
+            psicologo: psiSel.nome,
+            psicologoId: psiSel.id,
+            data: "15/06/2026",
+            horario: horario.textContent,
+            telefone1: "(31) 3287-9144",
+            telefone2: "(31) 98818-7301"
+        };
 
-const agendamento = {
-    usuarioId: 1,
-    psicologoId: psicologoIdSelecionado,
-    psicologoNome: psicologoSelecionado,
-    data: "2026-06-25",
-    horario: horario.textContent,
-    telefoneContato: "(31) 99999-9999",
-    status: "Pendente"
-};
+        localStorage.setItem(
+            "agendamento",
+            JSON.stringify(agendamento)
+        );
 
-console.log("Objeto criado:", agendamento);
-
-        fetch("http://localhost:3000/agendamentos", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(agendamento)
-        })
-        .then(dados => {
-
-    console.log("Agendamento salvo:", dados);
-
-    window.location.href = "(Gabriel)confirmacao.html";
-
-})
-        .catch(erro => {
-
-    console.error("ERRO NO FETCH:", erro);
-
-});
+        window.location.href = "(Gabriel)confirmacao.html";
 
     });
 

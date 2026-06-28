@@ -6,22 +6,24 @@ authors:
     given-names: Antônio
   - family-names: Cédric
     given-names: Gabriel
-  - family-names: Barbosa
+  - family-names: Marco
     given-names: Ian
   - family-names: Gonzaga
     given-names: Leonardo
+  - family-names: Pascoalon
+    given-names: João Pedro
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: Augusto de Faria Barros
+    family-names: Augusto
     given-names: Diego
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: de Quadros Maia Filhos
+    family-names: Quadros
     given-names: Danilo
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: da Silva Jandre
-    given-names: Caroline Rhaian
+    family-names: Rhaian
+    given-names: Caroline
 keywords:
   - Universitario
   - Psicólogo
@@ -29,4 +31,4 @@ keywords:
 repository-code: https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2026-1-ti1-0427200-plannit-1.git
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2026-06-25
+date-released: 2022-07-14
