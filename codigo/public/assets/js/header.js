@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <ul>
                     <li><a href="${rootPath}index.html" class="${isActive('index.html') || isActive('homepage.html') ? 'active' : ''}">Home</a></li>
                     <li><a href="${linkPsicologos}" class="${activePsicologos}">${isPsicologo ? 'Consultas' : 'Psicólogos'}</a></li>
-                    <li><a href="${rootPath}(ian)planejador_rotina.html" class="${isActive('(ian)planejador_rotina.html')}">Planejador</a></li>
+                    <li><a href="${rootPath}(ian)funcionalidades.html" class="${isActive('(ian)funcionalidades.html')}">Planejador</a></li>
                     <li><a href="${rootPath}(Antonio)comunidade.html" class="${isActive('(Antonio)comunidade.html')}">Comunidade</a></li>
                     <li><a href="${rootPath}(Antonio)sobre.html" class="${isActive('(Antonio)sobre.html')}">Sobre</a></li>
                     <li id="authContainer">${authButtons}</li>
