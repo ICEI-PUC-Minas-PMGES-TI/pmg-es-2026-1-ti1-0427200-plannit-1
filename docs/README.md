@@ -8,9 +8,7 @@ Informações básicas do projeto.
 
   * [Antônio Cardoso](https://github.com/AntonioCardosoASimoes)
   * [Gabriel Cedric]() 
-  * [Henrique Victor]()
   * [Ian Marco]()
-  * [João Victor Martins]()
   * [Leonardo Gonzaga]() 
 
 A documentação do projeto é estruturada da seguinte forma:
