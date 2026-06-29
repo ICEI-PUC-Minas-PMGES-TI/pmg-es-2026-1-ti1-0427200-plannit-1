@@ -183,29 +183,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RNF-007 | O sistema deve ter compatibilidade com os principais navegadores (Chrome, Edge, etc.) | MÉDIA      |
 
 
-## Projeto de Interface
-
-Artefatos relacionados com a interface e a interacão do usuário na proposta de solução.
-
-### Wireframes
-
-Estes são os protótipos de telas do sistema.
-
-[Wireframes](https://canva.link/07ofo16qk1kvwy9)
-
-### User Flow
-
-**✳️✳️✳️ COLOQUE AQUI O DIAGRAMA DE FLUXO DE TELAS ✳️✳️✳️**
-
-![Exemplo de fluxo de telas](images/exemplo-userflow.png)
 
 
-
-### Protótipo Interativo
-
-**✳️✳️✳️ COLOQUE AQUI UM IFRAME COM SEU PROTÓTIPO INTERATIVO ✳️✳️✳️**
-
-✅ [Protótipo Interativo (MarvelApp)](https://marvelapp.com/prototype/4hd6091?emb=1&iosapp=false&frameless=false)  ⚠️ EXEMPLO ⚠️
 
 
 
@@ -241,83 +220,100 @@ Esta seção apresenta todos os detalhes da solução criada no projeto.
 
 O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução. ⚠️ EXEMPLO ⚠️
 
-[![Vídeo do projeto](images/video.png)](https://www.youtube.com/embed/70gGoFyGeqQ)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O video de apresentação é voltado para que o público externo possa conhecer a solução. O formato é livre, sendo importante que seja apresentado o problema e a solução numa linguagem descomplicada e direta.
->
-> Inclua um link para o vídeo do projeto.
+![Vídeo do projeto](https://www.youtube.com/watch?v=g2kGJRrRM6c)
 
 ## Funcionalidades
 
 Esta seção apresenta as funcionalidades da solução.Info
 
-##### Funcionalidade 1 - Cadastro de Contatos ⚠️ EXEMPLO ⚠️
+##### Funcionalidade 1 - Login e cadastro do usuário
 
-Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
-
-* **Estrutura de dados:** [Contatos](#ti_ed_contatos)
+Permite a criação de um login para poder utilizar o site
 * **Instruções de acesso:**
-  * Abra o site e efetue o login
-  * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção Contatos
+  * Abra o site e vá na opção de "Entrar/Logar" no canto superior direito
+  * Se tiver uma conta faça o logim
+  * Caso contrário, crie sua conta
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+![1 Tela da Funcionalidade](image-4.png)
+![2 Tela da Funcionalidade](image-5.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
+##### Funcionalidade 2 - Agendar consulta com psicólogos
+
+Permite agendamento de consultas
+
+* **Instruções de acesso:**
+  * Na página principal vá em Acessar Consultas ou em Psicólogos no menu da página
+  * Lá você conseguirá ver os psicólogos disponíveis e agendar uma consulta
+
+##### Funcionalidade 3 - Organizar a rotina
+
+Permite que o estudande planeje melhor suas tarefas diárias
+
+* **Instruções de acesso:**
+  * Na página principal vá em Abrir Planejador ou em Planejador no menu da página
+  * Lá você conseguirá organizar sua rotina com as tarefas diárias necessárias
 
 ## Estruturas de Dados
 
 Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
 
-##### Estrutura de Dados - Contatos   ⚠️ EXEMPLO ⚠️
-
-Contatos da aplicação
+##### Estrutura de Dados
 
 ```json
   {
-    "id": 1,
-    "nome": "Leanne Graham",
-    "cidade": "Belo Horizonte",
-    "categoria": "amigos",
-    "email": "Sincere@april.biz",
-    "telefone": "1-770-736-8031",
-    "website": "hildegard.org"
-  }
+  "users": [
+    {
+      "login": "Leo",
+      "senha": "Leo",
+      "nome": "Leo",
+      "email": "Leo",
+      "tipo": "cliente",
+      "id": "KhoW7jET6z0"
+    },
+    {
+      "login": "Caio",
+      "senha": "Caio",
+      "nome": "Caio",
+      "email": "Caio",
+      "tipo": "psicologo",
+      "psicologoId": "nGyAsWyEm54",
+      "id": "cSLyPI7v3s0"
+    }
+  ],
+  "psicologos": [
+    {
+      "crp": "04/1234",
+      "especialidade": "Ansiedade",
+      "cidade": "Belo Horizonte",
+      "tipoAtendimento": "Ambos",
+      "telefone": "31983620578",
+      "valor": 120,
+      "duracao": 50,
+      "descricao": "Psicólogo clínico.",
+      "id": "nGyAsWyEm54",
+      "userId": "cSLyPI7v3s0"
+    }
+  ],
+  "solicitacoes": [
+    {
+      "clienteId": "KhoW7jET6z0",
+      "clienteNome": "Leo",
+      "psicologoId": "nGyAsWyEm54",
+      "psicologoNome": "Caio",
+      "data": "2026-06-28",
+      "horario": "08:00",
+      "status": "cancelada",
+      "id": "k2uqk8byuSM"
+    }
+  ],
+  "agenda": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
   
 ```
 
-##### Estrutura de Dados - Usuários  ⚠️ EXEMPLO ⚠️
 
-Registro dos usuários do sistema utilizados para login e para o perfil do sistema
-
-```json
-  {
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    email: "admin@abc.com",
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    login: "admin",
-    nome: "Administrador do Sistema",
-    senha: "123"
-  }
-```
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração
->
-> Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.
->
-> **Orientações:**
->
-> * [JSON Introduction](https://www.w3schools.com/js/js_json_intro.asp)
-> * [Trabalhando com JSON - Aprendendo desenvolvimento web | MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/JSON)
 
 ## Módulos e APIs
 
@@ -336,21 +332,10 @@ Esta seção apresenta os módulos e APIs utilizados na solução
 * jQuery - [http://www.jquery.com/](http://www.jquery.com/) ⚠️ EXEMPLO ⚠️
 * Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) ⚠️ EXEMPLO ⚠️
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.
+
 
 # Referências
 
 As referências utilizadas no trabalho foram:
 
-* SOBRENOME, Nome do autor. Título da obra. 8. ed. Cidade: Editora, 2000. 287 p ⚠️ EXEMPLO ⚠️
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Inclua todas as referências (livros, artigos, sites, etc) utilizados no desenvolvimento do trabalho.
->
-> **Orientações**:
->
-> - [Formato ABNT](https://www.normastecnicas.com/abnt/trabalhos-academicos/referencias/)
-> - [Referências Bibliográficas da ABNT](https://comunidade.rockcontent.com/referencia-bibliografica-abnt/)
